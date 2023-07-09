@@ -92,7 +92,7 @@ public class Hero
         }
     }
 
-    int GetNextLevelXp()
+    public int GetNextLevelXp()
     {
         float ratio = GameLibrary.HeroXpCurve.Evaluate((float)(level + 1) / GameLibrary.HerosMaxLevel);
         return (int)(ratio * GameLibrary.HerosXpAtMaxLevel);

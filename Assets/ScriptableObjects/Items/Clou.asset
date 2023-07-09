@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 161845386, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
   displayName: cool sock
-  enumValue: 0
+  enumValue: 1

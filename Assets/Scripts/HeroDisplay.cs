@@ -10,28 +10,31 @@ public class HeroDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI heroNameUI;
     [SerializeField] private TextMeshProUGUI heroTypeUI;
     [SerializeField] private Slider xpBar;
-    [SerializeField] private TextMeshProUGUI levelUI;
     [SerializeField] private Hero currentHero;
+
+    public TextMeshProUGUI heroCurrentLevel;
+    public TextMeshProUGUI heroCurrentXP;
+    public TextMeshProUGUI xpForNextLevel;
 
     public void setXpBar(float value)
     {
         xpBar.value = value;
     }
 
-    public void setLevelUI(int value)
-    {
-        levelUI.text = value.ToString();
-    }
-
     public void displayHero(Hero hero)
     {
         currentHero = hero;
         HeroType heroType = hero.heroType;
-        if (hero.level > heroType.maxLevel) throw new System.Exception("Tu te fous de ma gueule avec ce level là");
-        heroSpriteImage.sprite = heroType.characterSprites[hero.level];
+        if (hero.level > GameLibrary.HerosMaxLevel) throw new System.Exception("Tu te fous de ma gueule avec ce level là");
+        if(hero.level > (int)(GameLibrary.HerosMaxLevel/2))
+            heroSpriteImage.sprite = heroType.characterSprites[1];
+        else heroSpriteImage.sprite = heroType.characterSprites[0];
         setXpBar(hero.heroType.GetXpNormalized(hero.xp, hero.level));
         heroNameUI.text = hero.displayName;
         heroTypeUI.text = hero.heroType.swaggName;
+        heroCurrentLevel.text = hero.level.ToString();
+        heroCurrentXP.text = hero.xp.ToString();
+        xpForNextLevel.text = hero.GetNextLevelXp().ToString();
     }
 
     public void NextHero()

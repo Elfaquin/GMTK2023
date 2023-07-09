@@ -42,6 +42,5 @@ MonoBehaviour:
   maxLevel: 2
   xpFactor: 1000
   characterSprites:
-  - {fileID: 21300000, guid: 305789e3094a9eb469387abaded3f2e3, type: 3}
-  - {fileID: 21300000, guid: bcba0ea4700d71845942152ab70ab363, type: 3}
-  - {fileID: 21300000, guid: acb3b05a104595d449a6dbcf4117ad53, type: 3}
+  - {fileID: 21300000, guid: 403dfa4d9492c7744bc549bc5f02c312, type: 3}
+  - {fileID: 21300000, guid: 933d4a80273f4c24cbb28c35d6f19075, type: 3}

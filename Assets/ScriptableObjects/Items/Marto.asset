@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -1230720075, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
   displayName: hammer
-  enumValue: 0
+  enumValue: 2

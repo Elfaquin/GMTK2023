@@ -117,8 +117,8 @@ MonoBehaviour:
   containedItem: {fileID: 0}
   itemImageUI: {fileID: 775853236413903478}
   backgroundImageUI: {fileID: 775853235777312131}
-  debugHasStartingItem: 1
-  debugStartingItem: 1
+  debugHasStartingItem: 0
+  debugStartingItem: 0
 --- !u!1 &775853235777312129
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.10809326, y: -0.15000916}
+  m_AnchoredPosition: {x: 0.10809326, y: -0.15002441}
   m_SizeDelta: {x: -0.21619, y: 0.30007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &775853236413903481

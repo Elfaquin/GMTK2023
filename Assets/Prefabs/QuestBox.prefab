@@ -641,7 +641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 175.16667, y: 0}
+  m_AnchoredPosition: {x: 54.240738, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4020496350380658869
@@ -1132,7 +1132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 525.5, y: 0}
+  m_AnchoredPosition: {x: 162.72221, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1411169319369997279
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   descriptionImage: {fileID: 138940933}
   description: {fileID: 2075034907}
   guyPortrait: {fileID: 7247290906397371565}
-  questButton: {fileID: 0}
+  questButton: {fileID: 8655171780045767731}
   spriteOfEmptyGuy: {fileID: 740081318, guid: 2eda6b4124fe3bc40a0d9175cafccfca, type: 3}
   frameImage: {fileID: 8593208653707323396}
   lostItemImageUI: {fileID: 4091486803418995930}
@@ -1466,8 +1466,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1051, y: 0}
-  m_SizeDelta: {x: 475.5, y: 0}
+  m_AnchoredPosition: {x: 325.44443, y: 0}
+  m_SizeDelta: {x: 112.72221, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7247290905911871248
 CanvasRenderer:
@@ -1883,7 +1883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 875.8334, y: 0}
+  m_AnchoredPosition: {x: 271.20367, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304670845661607055

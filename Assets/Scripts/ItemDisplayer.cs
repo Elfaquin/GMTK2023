@@ -21,6 +21,11 @@ public class ItemDisplayer : MonoBehaviour
         if (hasItem)
         {
             SetItem(GameLibrary.GetItemFromEnum(debugStartingItem));
+            GameLibrary.DoAfter(() =>
+            {
+                GameLibrary.InventoryManager.AddItem(debugStartingItem);
+            });
+            
         }
     }
 

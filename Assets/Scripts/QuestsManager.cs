@@ -52,7 +52,7 @@ public class QuestsManager : MonoBehaviour
                 questDisplayer.Unlock();
             }
             
-            if(questDisplayer.IsAccessibleAtThisLevel())
+            if(questDisplayer.IsAccessibleAtThisLevel() == false)
             {
                 questDisplayer.Lock();
             }

@@ -15,22 +15,24 @@ public class InventoryManager : MonoBehaviour
     public AnimationCurve xpCurve;
     public int level;
 
-
-
     public bool HasItem(ItemEnum itemEnum)
     {
-        foreach (var itemDisplayer in itemDisplayers)
+        foreach (ItemEnum gotItemEnum in items)
         {
-            if (itemDisplayer.containedItem == GameLibrary.GetItemFromEnum(itemEnum)) return true;
+            if (gotItemEnum == itemEnum) return true;
         }
         return false;
     }
 
     public bool AddItem(ItemEnum itemEnum)
     {
-        if (HasItem(itemEnum)) return false;
+        if (HasItem(itemEnum))
+        {
+            return false;
+        }
         items.Add(itemEnum);
         ResortDisplayers();
+
         return true;
 
         // REEVALUATE QUESTS !
@@ -38,24 +40,26 @@ public class InventoryManager : MonoBehaviour
 
     public bool RemoveItem(ItemEnum itemEnum)
     {
-        if(!HasItem(itemEnum)) return false;
+        if (!HasItem(itemEnum))
+        {
+            return false;
+        }
         if (items.Contains(itemEnum))
         {
             items.Remove(itemEnum);
             ResortDisplayers();
             return true;
-        }  
+        }
         return false;
-
-        // REEVALUATE QUESTS !
     }
 
     public void ResortDisplayers()
     {
+
         // Reset
         foreach (var itemDisplayer in itemDisplayers)
         {
-            itemDisplayer.RemoveItem();
+            if(itemDisplayer.hasItem) itemDisplayer.RemoveItem();
         }
 
         // Fill

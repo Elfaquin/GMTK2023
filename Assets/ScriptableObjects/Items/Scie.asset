@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -896799593, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
   displayName: sickle
-  enumValue: 0
+  enumValue: 3

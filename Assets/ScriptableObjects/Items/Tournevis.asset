@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -363037032, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
   displayName: cool hat
-  enumValue: 0
+  enumValue: 4

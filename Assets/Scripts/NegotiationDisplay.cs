@@ -162,6 +162,11 @@ public class NegotiationDisplay : MonoBehaviour
         GameLibrary.PlayerGoldManager.RemoveGold(givenGoldCount);
         GameLibrary.HeroQueue.AssignQuestToFirstHero(currentQuest, ComputeChancesOfSuccess());
         GameLibrary.HeroQueue.NextQueueTurn();
+        if(currentQuest.hasLostItem)
+        {
+            Debug.Log($"Remove this motherfucking. {currentQuest.lostItem.enumValue}");
+            GameLibrary.InventoryManager.RemoveItem(currentQuest.lostItem.enumValue);
+        }
         currentQuest = null;
         GameLibrary.QuestManager.RerollQuests();
         Hide();

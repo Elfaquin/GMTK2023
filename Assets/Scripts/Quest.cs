@@ -123,7 +123,7 @@ public class Quest
         {
             if (GameLibrary.InventoryManager.HasItem(lostItem.enumValue) == false)
             {
-                Debug.LogWarning($"Quest impossible : wants to give the item {fetchedItem.enumValue}");
+                Debug.LogWarning($"Quest impossible : wants to give the item {lostItem.enumValue}");
                 return true;
             }
         }
