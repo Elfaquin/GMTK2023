@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Tournevis
   m_EditorClassIdentifier: 
   sprite: {fileID: -363037032, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
-  displayName: Tournevis
+  displayName: cool hat
+  enumValue: 0

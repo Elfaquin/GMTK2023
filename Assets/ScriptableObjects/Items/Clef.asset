@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Clef
   m_EditorClassIdentifier: 
   sprite: {fileID: 292622648, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
-  displayName: Clef
+  displayName: key
+  enumValue: 0

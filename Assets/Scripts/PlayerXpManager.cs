@@ -11,7 +11,7 @@ public class PlayerXpManager : MonoBehaviour
     public TextMeshProUGUI currentXpCount;
     public Slider XpSlider;
 
-    int currentLevel;
+    public int currentLevel;
     int currentXp;
     public AnimationCurve playerXpCurve;
     public int xpAtStart;

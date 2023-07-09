@@ -32,6 +32,7 @@ public class LogsWindow : MonoBehaviour {
 		var line = Instantiate(linePrefab);
 		line.SetValues(type, val);
 		line.transform.SetParent(content);
+		line.transform.localScale = Vector3.one;
 
 		// remove the first element if needed
 		if(content.transform.childCount > maxLines) {

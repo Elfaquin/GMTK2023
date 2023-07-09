@@ -107,6 +107,27 @@ public class Quest
         return newQuest;
     }
 
+    public bool isImpossible()
+    {
+        // Condition 1 : if the fetched item is already in the inventory
+        if(hasFetchedItem)
+        {
+            if(GameLibrary.InventoryManager.HasItem(fetchedItem.enumValue) == false)
+            {
+                return true;
+            }
+        }
+        // Condition 2 : if the given item is not in the inventory
+        if (hasLostItem)
+        {
+            if (GameLibrary.InventoryManager.HasItem(lostItem.enumValue) == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /*public bool AddGuy(Hero guy)
     {
         if (guysList.Count < MaximumGuys)
