@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c6757227a6b9348a8668702ba8c9b5, type: 3}
-  m_Name: Tournevis
+  m_Script: {fileID: 11500000, guid: e7b8334c5d8608243a13d21f115c7e25, type: 3}
+  m_Name: Crystal
   m_EditorClassIdentifier: 
-  sprite: {fileID: -363037032, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
-  displayName: Tournevis
+  sprite: {fileID: -1309223386, guid: 92bb0b05810c1b546bb7ab6221173451, type: 3}
+  displayName: Crystal
+  goldCount: 10

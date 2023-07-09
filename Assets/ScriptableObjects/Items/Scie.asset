@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c6757227a6b9348a8668702ba8c9b5, type: 3}
   m_Name: Scie
   m_EditorClassIdentifier: 
-  sprite: {fileID: 1796741262, guid: 886802e45d54c7e4eb6b5f6f48831e99, type: 3}
+  sprite: {fileID: -896799593, guid: d1ccc8f0f2822f648a3a7c1c42de4481, type: 3}
   displayName: Scie
