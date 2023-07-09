@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< Updated upstream
 public class InventoryManager : MonoBehaviour
 {
     public List<ItemEnum> fetchingItems;
