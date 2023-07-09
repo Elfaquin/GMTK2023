@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class LogsWindow : MonoBehaviour {
 
@@ -8,6 +10,7 @@ public class LogsWindow : MonoBehaviour {
 	[SerializeField] private LogsLine linePrefab;
 	[SerializeField] private int maxLines = 50;
 
+	[SerializeField] private Scrollbar scrollbar;
 	[SerializeField] private RectTransform content;
 
 	[Header("Content")]
@@ -40,6 +43,8 @@ public class LogsWindow : MonoBehaviour {
 		}
 
 		// update cursor position ?
+		Canvas.ForceUpdateCanvases();
+		scrollbar.value = 0;
 	}
 
 	private string RandomRageQuit() {

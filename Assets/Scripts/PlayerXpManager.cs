@@ -29,10 +29,14 @@ public class PlayerXpManager : MonoBehaviour
 
     public void BuyXpBottle()
     {
+        Debug.Log("aaa");
         if (currentLevel == maxLevel) return;
-        if (!GameLibrary.PlayerGoldManager.RemoveGold(xpBottleCostInGoldCurrencyWithoutInflation)) return;
-        AddXp(xpGainPerBottle);
-    }
+		Debug.Log("aaeea");
+		if (!GameLibrary.PlayerGoldManager.RemoveGold(xpBottleCostInGoldCurrencyWithoutInflation)) return;
+		Debug.Log("ddd");
+		AddXp(xpGainPerBottle);
+		Debug.Log("ccc");
+	}
 
     public int GetMaxZone() {
         if(currentLevel <= 1) {
@@ -52,6 +56,7 @@ public class PlayerXpManager : MonoBehaviour
 
     public void AddXp(int count)
     {
+		Debug.Log("test");
         if (currentLevel == maxLevel) return;
         LogsWindow.Event_GainExperience(count);
 
