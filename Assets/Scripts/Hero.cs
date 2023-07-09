@@ -44,10 +44,10 @@ public class Hero
 
     public float ComputeChancesOfSuccess(Quest assignedQuest)
     {
-        float chancesOfSuccess = 1.0f;
-        //chancesOfSuccess = Mathf.Max(0.08f, level/ (float)(9 * Mathf.Log10(assignedQuest.difficulty * 9 + 2)));
-        chancesOfSuccess = Mathf.Max(0.08f, level / (float)(assignedQuest.difficulty * 3 + 2));
-        if (heroType == GameLibrary.GetHeroTypeFromEnum(assignedQuest.heroType)) { chancesOfSuccess += 0.20f; }
+		float chancesOfSuccess = Mathf.Max(0.08f, level / (float)(assignedQuest.difficulty * 3 + 2));
+        if (heroType == GameLibrary.GetHeroTypeFromEnum(assignedQuest.heroType)) {
+            chancesOfSuccess += 0.20f;
+        }
         Debug.Log($"Chances of success computation: {level} over {(float)(9*Mathf.Log10(assignedQuest.difficulty*9 + 2))} equals {chancesOfSuccess}");
         return chancesOfSuccess;
     }

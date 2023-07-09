@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2075034908}
   - component: {fileID: 2075034907}
   m_Layer: 5
-  m_Name: DescriptionText
+  m_Name: label_heroType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <quest_type>
+  m_text: <hero_type>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8477b3a27a3bf384b97f58dbbc91a890, type: 2}
   m_sharedMaterial: {fileID: 1984520423328060751, guid: 8477b3a27a3bf384b97f58dbbc91a890, type: 2}
@@ -641,7 +641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 54.240738, y: 0}
+  m_AnchoredPosition: {x: 70.95679, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4020496350380658869
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3996556524737969684}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 327942224, guid: 80f45230ca1256946b1cbe49a5579777, type: 3}
+  m_Sprite: {fileID: 882887256, guid: 80f45230ca1256946b1cbe49a5579777, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -913,12 +913,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 25
-    m_Right: 25
-    m_Top: 25
+    m_Left: 15
+    m_Right: 15
+    m_Top: 15
     m_Bottom: 15
   m_ChildAlignment: 0
-  m_Spacing: 3
+  m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -1208,7 +1208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 162.72221, y: 0}
+  m_AnchoredPosition: {x: 212.87036, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1411169319369997279
@@ -1440,10 +1440,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4ae335dda3195fb42b5dd6eeef96cc6c, type: 3}
   - {fileID: 21300000, guid: 23229b4d0e42a3446bd2c6370d0e169b, type: 3}
   difficultyImage: {fileID: 7247290905911871249}
-  heroTypeText: {fileID: 7247290906082167727}
-  questTypeText: {fileID: 2075034907}
+  heroTypeText: {fileID: 2075034907}
+  questTypeText: {fileID: 7247290906082167727}
   heroTypeImage: {fileID: 138940933}
-  description: {fileID: 2075034907}
   guyPortrait: {fileID: 7247290906397371565}
   questButton: {fileID: 8655171780045767731}
   spriteOfEmptyGuy: {fileID: 740081318, guid: 2eda6b4124fe3bc40a0d9175cafccfca, type: 3}
@@ -1475,10 +1474,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.5754717, g: 0.29587933, b: 0.29587933, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1544,10 +1543,10 @@ RectTransform:
   m_Father: {fileID: 6433902418843680994}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325.44443, y: 0}
-  m_SizeDelta: {x: 112.72221, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 425.74072, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7247290905911871248
 CanvasRenderer:
@@ -1602,7 +1601,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 20
   m_MinHeight: -1
-  m_PreferredWidth: 50
+  m_PreferredWidth: 25
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -1619,7 +1618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AspectMode: 1
+  m_AspectMode: 2
   m_AspectRatio: 2
 --- !u!1 &7247290906082167725
 GameObject:
@@ -1634,7 +1633,7 @@ GameObject:
   - component: {fileID: 7247290906082167727}
   - component: {fileID: 39681060118402547}
   m_Layer: 5
-  m_Name: HeroTypeText
+  m_Name: Label_questType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1688,7 +1687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <hero_type>
+  m_text: <quest_type>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8477b3a27a3bf384b97f58dbbc91a890, type: 2}
   m_sharedMaterial: {fileID: 1984520423328060751, guid: 8477b3a27a3bf384b97f58dbbc91a890, type: 2}
@@ -1719,7 +1718,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 5
   m_fontSizeMax: 25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -1772,7 +1771,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 35
   m_MinHeight: -1
-  m_PreferredWidth: 150
+  m_PreferredWidth: 210
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -1963,7 +1962,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 271.20367, y: 0}
+  m_AnchoredPosition: {x: 354.78394, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304670845661607055

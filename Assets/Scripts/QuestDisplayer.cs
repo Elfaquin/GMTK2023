@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.Events;
-using Unity.VisualScripting;
 
 public class QuestDisplayer : MonoBehaviour
 {
@@ -23,8 +21,6 @@ public class QuestDisplayer : MonoBehaviour
     [SerializeField] TextMeshProUGUI heroTypeText;
     [SerializeField] TextMeshProUGUI questTypeText;
     [SerializeField] Image heroTypeImage;
-    [SerializeField] TextMeshProUGUI description;
-    //[SerializeField] List<Image> guysPortraits;
     [SerializeField] Image guyPortrait;
     [SerializeField] Button questButton;
     [SerializeField] Sprite spriteOfEmptyGuy;

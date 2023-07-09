@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class NegotiationDisplay : MonoBehaviour
 {
     [SerializeField] bool isDisplayed;
-
+    [SerializeField] private Gradient success_gradient;
+     
     public Image panelHider;
 
     public TextMeshProUGUI randomText1;
@@ -17,7 +18,6 @@ public class NegotiationDisplay : MonoBehaviour
     public TextMeshProUGUI questTitle;
     public TextMeshProUGUI questDescription;
     public TextMeshProUGUI questType;
-    public Image questTypeImage;
     public TextMeshProUGUI questHeroType;
     public Image questHeroTypeImage;
 
@@ -49,6 +49,8 @@ public class NegotiationDisplay : MonoBehaviour
 
     public float heroSatisfaction;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +79,6 @@ public class NegotiationDisplay : MonoBehaviour
         questTitle.text = quest.title;
         questDescription.text = quest.description;
         questType.text = "Quest type: " + quest.type.displayName;
-        questTypeImage.sprite = quest.type.sprite;
         questHeroType.text = GameLibrary.GetHeroTypeFromEnum(quest.heroType).displayName;
         questHeroTypeImage.sprite = GameLibrary.GetHeroTypeFromEnum(quest.heroType).icon;
         givenXpCount = 0;
@@ -111,7 +112,8 @@ public class NegotiationDisplay : MonoBehaviour
         }
 
         float chancesOfSucces = Mathf.Round(GameLibrary.HeroDisplay.GetCurrentHero().ComputeChancesOfSuccess(quest) * 100.0f);
-        chancesOfSuccessUI.text = $"Chances of success : {Mathf.Max(chancesOfSucces-5, 8)}% - {Mathf.Min(100,chancesOfSucces+5)}%";
+        chancesOfSuccessUI.color = success_gradient.Evaluate(chancesOfSucces / 100f);
+		chancesOfSuccessUI.text = $"Chances of success : {Mathf.Max(chancesOfSucces-5, 8)}% - {Mathf.Min(100,chancesOfSucces+5)}%";
 
         ComputeSatisfaction();
     }
@@ -153,11 +155,6 @@ public class NegotiationDisplay : MonoBehaviour
         {
             SetNotReady();
         }
-    }
-
-    public float ComputeChancesOfSuccess()
-    {
-        return 1.0f;
     }
 
     public void OnValidateButton()
