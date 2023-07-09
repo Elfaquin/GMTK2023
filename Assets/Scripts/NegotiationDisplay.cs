@@ -160,7 +160,7 @@ public class NegotiationDisplay : MonoBehaviour
         GameLibrary.PlayerXpManager.RemoveXp(givenXpCount);
         GameLibrary.PlayerXpManager.AddXp(GameLibrary.StaticXpGainedByPlayerPerQuest);
         GameLibrary.PlayerGoldManager.RemoveGold(givenGoldCount);
-        GameLibrary.HeroQueue.AssignQuestToFirstHero(currentQuest, ComputeChancesOfSuccess());
+        GameLibrary.HeroQueue.AssignQuestToFirstHero(currentQuest);
         GameLibrary.HeroQueue.NextQueueTurn();
         if(currentQuest.hasLostItem)
         {

@@ -23,9 +23,9 @@ public class HeroQueue : MonoBehaviour
         heroDisplay.displayHero(heroQueue[0]);
     }
 
-    public void AssignQuestToFirstHero(Quest quest, float chancesOfSuccess)
+    public void AssignQuestToFirstHero(Quest quest)
     {
-        heroQueue[0].AssignQuest(quest, chancesOfSuccess);
+        heroQueue[0].AssignQuest(quest);
     }
 
     void EnqueueNewHero()

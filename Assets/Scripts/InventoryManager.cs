@@ -8,6 +8,7 @@ using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
+    public List<ItemEnum> fetchingItems;
     public List<ItemEnum> items;
     public List<ItemDisplayer> itemDisplayers;
     public int gold;
@@ -117,5 +118,10 @@ public class InventoryManager : MonoBehaviour
             }
         }
         return posessedItems;
-    }    
+    }
+
+    public bool IsFetching(ItemEnum item)
+    {
+        return fetchingItems.Contains(item);
+    }
 }

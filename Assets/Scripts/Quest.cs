@@ -32,6 +32,7 @@ public class Quest
     public int rarity;
     public bool isKillingQuest;
     public int xpOnSuccess;
+    public float chancesOfSuccess;
 
     /**
      * Insatantiates a Quest with random attributes.
@@ -101,6 +102,7 @@ public class Quest
         newQuest.heroType = GameLibrary.RandomHeroType();
         newQuest.rarity = UnityEngine.Random.Range(0, nbRarity);
         newQuest.hasAssignedHero = false;
+        newQuest.chancesOfSuccess = 1.0f;
 
         newQuest.xpOnSuccess = 0;
 

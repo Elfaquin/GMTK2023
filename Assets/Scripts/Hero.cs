@@ -10,7 +10,7 @@ public class Hero
     public string displayName;
     [SerializeField] private Quest assignedQuest;
     public bool hasQuestAssigned;
-    [SerializeField] private float chancesOfSuccess;
+    
     public float xp { get; private set; }
 
     private static string[] HERO_NAMES = {
@@ -35,11 +35,19 @@ public class Hero
         return generatedHero;
     }
 
-    public void AssignQuest(Quest assignedQuest, float chancesOfSuccess)
+    public void AssignQuest(Quest assignedQuest)
     {
         this.assignedQuest = assignedQuest;
-        this.chancesOfSuccess = chancesOfSuccess;
+        this.assignedQuest.chancesOfSuccess = ComputeChancesOfSuccess(assignedQuest);
         hasQuestAssigned = true;
+    }
+
+    public float ComputeChancesOfSuccess(Quest assignedQuest)
+    {
+        float chancesOfSuccess = 1.0f;
+        float randomFactor = Random.Range(-0.1f, 0.1f);
+        chancesOfSuccess = Mathf.Max(0.08f, level/(assignedQuest.difficulty*2)-randomFactor);
+        return chancesOfSuccess;
     }
 
     public bool ResolveQuest()
@@ -49,7 +57,7 @@ public class Hero
             Debug.LogWarning("You are trying to resolve a null quest.");
             return false;
         }
-        float success = UnityEngine.Random.Range(0, this.chancesOfSuccess);
+        float success = UnityEngine.Random.Range(0, assignedQuest.chancesOfSuccess);
         if (success > 0)
         {
             LogsWindow.Event_QuestSucceeded(assignedQuest);
