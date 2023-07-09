@@ -13,6 +13,7 @@ public class PlayerGoldManager : MonoBehaviour
     void Start()
     {
         currentGold = initialGold;
+        GameLibrary.InventoryManager.gold = currentGold;
         ActualizeDisplay();
     }
 
@@ -20,6 +21,7 @@ public class PlayerGoldManager : MonoBehaviour
     {
         currentGold += count;
         ActualizeDisplay();
+        LogsWindow.Event_GainExperience(count);
     }
 
     public bool RemoveGold(int count) 

@@ -40,6 +40,7 @@ public class GameLibrary : MonoBehaviour
     [SerializeField] private AnimationCurve heroXpCurve;
     [SerializeField] private int herosMaxLevel;
     [SerializeField] private int herosXpAtMaxLevel;
+    [SerializeField] private int staticXpGainedByPlayerPerQuest;
 
     public static InventoryManager InventoryManager { get { return Instance.inventoryManager; } }
     public static NegotiationDisplay NegotiationDisplay { get { return Instance.negotiationDisplay; } }
@@ -51,6 +52,7 @@ public class GameLibrary : MonoBehaviour
     public static QuestsManager QuestManager { get { return Instance.questManager; } }
 
     public static int StaticXpGainedByHeroPerQuest { get { return Instance.staticXpGainedByHeroPerQuest; } }
+    public static int StaticXpGainedByPlayerPerQuest { get { return Instance.staticXpGainedByPlayerPerQuest; } }
     public static AnimationCurve HeroXpCurve { get { return Instance.heroXpCurve; } }
     public static int HerosMaxLevel { get { return Instance.herosMaxLevel; } }
     public static int HerosXpAtMaxLevel { get { return Instance.herosXpAtMaxLevel; } }

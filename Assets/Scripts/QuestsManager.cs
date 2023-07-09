@@ -39,6 +39,30 @@ public class QuestsManager : MonoBehaviour
 
     }
 
+    public void RerollQuests()
+    {
+        foreach(GameObject go in questDisplayers)
+        {
+            QuestDisplayer questDisplayer = go.GetComponent<QuestDisplayer>();
+            questDisplayer.OnNextTurn();
+            if(questDisplayer.isLocked)
+            {
+                Quest newQuest = Quest.CreateRandomQuest();
+                questDisplayer.SetCurrentQuest(newQuest);
+                questDisplayer.Unlock();
+            }
+            
+            // Impossible condition check
+            if(questDisplayer.currentQuest.isImpossible())
+            {
+                Quest newQuest = Quest.CreateRandomQuest();
+                questDisplayer.SetCurrentQuest(newQuest);
+                questDisplayer.Unlock();
+                RerollQuests();
+            }
+        }
+
+    }
 
     public void AddQuest(Quest quest)
     {

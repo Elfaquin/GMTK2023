@@ -42,6 +42,7 @@ public class HeroDisplay : MonoBehaviour
 
     public Hero GetCurrentHero()
     {
+        Debug.Log($"GetCurrentHero called for {currentHero.displayName}");
         return currentHero;
     }
 }

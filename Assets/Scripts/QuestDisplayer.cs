@@ -11,8 +11,9 @@ public class QuestDisplayer : MonoBehaviour
     public Quest currentQuest; //{ get; private set; }
 
     // Internal
-    private bool isLocked;
+    public bool isLocked;
     public int displayerId;
+    public int accessibleAtLevel = 0;
 
     // Prefab Stuff
     [SerializeField] Sprite[] backgroundImages;
@@ -20,6 +21,7 @@ public class QuestDisplayer : MonoBehaviour
     // GUI
     [SerializeField] Image difficultyImage;
     [SerializeField] TextMeshProUGUI heroTypeText;
+    [SerializeField] TextMeshProUGUI questTypeText;
     [SerializeField] Image descriptionImage;
     [SerializeField] TextMeshProUGUI description;
     //[SerializeField] List<Image> guysPortraits;
@@ -45,61 +47,59 @@ public class QuestDisplayer : MonoBehaviour
         guyPortrait.sprite = spriteOfEmptyGuy;
     }
 
-    public void SetCurrentQuest(Quest currentQuest)
+    public void SetCurrentQuest(Quest newQuest)
     {
-        this.currentQuest = currentQuest;
+        this.currentQuest = newQuest;
         ActualizeDisplay();
 
     }
 
     public void ActualizeDisplay()
     {
-        Debug.Log($"{transform.name}: The currentQuest is {currentQuest}.");
-        if(!isLocked)
+        difficultyImage.sprite = GameLibrary.GetDifficultySprite(currentQuest.difficulty);
+        heroTypeText.text = GameLibrary.GetHeroTypeFromEnum(currentQuest.heroType).displayName;
+        questTypeText.text = currentQuest.type.displayName;
+        Color frameColor = GameLibrary.GetRarityColor(currentQuest.rarity);
+        frameImage.color = frameColor;
+        frameImage.enabled = false;
+        frameImage.enabled = true;
+        if (currentQuest.hasFetchedItem)
         {
-            difficultyImage.sprite = GameLibrary.GetDifficultySprite(currentQuest.difficulty);
-            heroTypeText.text = GameLibrary.GetHeroTypeFromEnum(currentQuest.heroType).displayName;
-            Color frameColor = GameLibrary.GetRarityColor(currentQuest.rarity);
-            frameImage.color = frameColor;
-            frameImage.enabled = false;
-            frameImage.enabled = true;
-            if (currentQuest.hasFetchedItem)
-            {
-                fetchedtemImageUI.SetItem(currentQuest.fetchedItem);
-            }
-            else if (fetchedtemImageUI.hasItem) fetchedtemImageUI.RemoveItem();
-            if(currentQuest.hasLostItem)
-            {
-                lostItemImageUI.SetItem(currentQuest.lostItem);
-            }
-            else if(lostItemImageUI.hasItem) lostItemImageUI.RemoveItem();
-            minorItemImageUI.SetItem(currentQuest.minorItem);
-            obtainedMoneyText.text = (currentQuest.minorItemCount * currentQuest.minorItem.goldCount).ToString();
-            /*int i=0;
-            int nbGuys = currentQuest.guysList.Count;
-            foreach (Image guyPortrait in guysPortraits)
-            {
-                if (i < nbGuys) { guyPortrait.sprite = currentQuest.guysList[i].heroType.icon; }
-                else { guyPortrait.sprite = spriteOfEmptyGuy;  }
-                i++;
-            }*/
-            if (currentQuest.hasAssignedHero)
-            {
-                guyPortrait.sprite = currentQuest.assignedHero.heroType.icon;
-                DisplayFullQuest(true);
-            }
-            else
-            {
-                guyPortrait.sprite = spriteOfEmptyGuy;
-                DisplayFullQuest(false);
-            }
-            //DisplayFullQuest(!hasHeroTemporarilyAssigned);
+            fetchedtemImageUI.SetItem(currentQuest.fetchedItem);
         }
+        else if (fetchedtemImageUI.hasItem) fetchedtemImageUI.RemoveItem();
+        if(currentQuest.hasLostItem)
+        {
+            lostItemImageUI.SetItem(currentQuest.lostItem);
+        }
+        else if(lostItemImageUI.hasItem) lostItemImageUI.RemoveItem();
+        minorItemImageUI.SetItem(currentQuest.minorItem);
+        obtainedMoneyText.text = (currentQuest.minorItemCount * currentQuest.minorItem.goldCount).ToString();
+        /*int i=0;
+        int nbGuys = currentQuest.guysList.Count;
+        foreach (Image guyPortrait in guysPortraits)
+        {
+            if (i < nbGuys) { guyPortrait.sprite = currentQuest.guysList[i].heroType.icon; }
+            else { guyPortrait.sprite = spriteOfEmptyGuy;  }
+            i++;
+        }*/
+        if (currentQuest.hasAssignedHero)
+        {
+            guyPortrait.sprite = currentQuest.assignedHero.heroType.icon;
+            DisplayFullQuest(true);
+        }
+        else
+        {
+            guyPortrait.sprite = spriteOfEmptyGuy;
+            DisplayFullQuest(false);
+        }
+        //DisplayFullQuest(!hasHeroTemporarilyAssigned);
     }
 
     public void DisplayFullQuest(bool isFull)
     {
-        questButton.interactable = !isFull;
+        if (isFull) Lock();
+        else Unlock();
     }
 
     /**
@@ -124,7 +124,8 @@ public class QuestDisplayer : MonoBehaviour
             GameLibrary.QuestManager.OnAnyQuestDisplayerSelected(displayerId);
             GameLibrary.NegotiationDisplay.SetNewQuest(currentQuest);
         }
-        else Debug.LogError("Le héros est nul.");
+        else if(assigned_hero == null) Debug.LogError("Le héros est nul.");
+        else Debug.LogError("L'erreur étonnante.");
     }
 
     /*
@@ -134,7 +135,7 @@ public class QuestDisplayer : MonoBehaviour
     {
         if(hasHeroTemporarilyAssigned)
         {
-            
+            Debug.Log($"{gameObject.name} :Oui, c'est moi.");
             //currentQuest.RemoveGuy();
             currentQuest.UnsetHero();
             ActualizeDisplay();
@@ -154,6 +155,11 @@ public class QuestDisplayer : MonoBehaviour
     {
         isLocked = true;
         questButton.interactable = false;
+    }
+
+    public bool IsAccessibleAtThisLevel()
+    {
+        return (GameLibrary.PlayerXpManager.current this.accessibleAtLevel > 0);
     }
 
     public void Unlock()

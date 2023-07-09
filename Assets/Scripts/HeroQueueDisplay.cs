@@ -8,7 +8,7 @@ public class HeroQueueDisplay : MonoBehaviour
     public HeroQueue heroQueue;
     public List<Image> heroIcons;
 
-    void SetHeroIcons(List<Hero> heroQueue)
+    public void SetHeroIcons(List<Hero> heroQueue)
     {
         if(heroQueue.Count != heroIcons.Count)
         {

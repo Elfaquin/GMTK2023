@@ -10,7 +10,7 @@ public class NegotiationDisplay : MonoBehaviour
 {
     [SerializeField] bool isDisplayed;
 
-    public List<GameObject> displayElements;
+    public Image panelHider;
 
     public TextMeshProUGUI randomText1;
     public TextMeshProUGUI randomText2;
@@ -96,19 +96,24 @@ public class NegotiationDisplay : MonoBehaviour
             givenItemText.text = "The hero won't receive any item as a reward.";
         }
         minorItem.SetItem(quest.minorItem);
-        goldEquivalent.text = quest.minorItem.goldCount.ToString();
+        goldEquivalent.text = (quest.minorItem.goldCount  * quest.minorItemCount).ToString();
         minorItemName.text = $"The hero will bring you {quest.minorItem.displayName} that you can sell.";
         if(quest.hasFetchedItem)
         {
             majorItem.SetItem(quest.fetchedItem);
             majorItemName.text = $"The hero will fetch a {quest.fetchedItem.displayName} for you.";
         }
+        else
+        {
+            if (majorItem.hasItem) majorItem.RemoveItem();
+            majorItemName.text = "You won't receive any item.";
+        }
         ComputeSatisfaction();
     }
 
     public void OnGoldSliderValueChanged()
     {
-        givenGoldCount = (int)(givenGold.value  * GameLibrary.InventoryManager.gold * currentQuest.minorItemCount);
+        givenGoldCount = (int)(givenGold.value  * GameLibrary.InventoryManager.gold);
         givenGoldText.text = $"{givenGoldCount}/{GameLibrary.InventoryManager.gold}";
         ComputeSatisfaction();
     }
@@ -126,15 +131,16 @@ public class NegotiationDisplay : MonoBehaviour
         float targetSatisfaction = 10;
         targetSatisfaction += (int)(Mathf.Pow(currentQuest.assignedHero.level, 2.0f));
         float achievedSatisfaction = 0;
-        if(currentQuest.hasFetchedItem)
+        if(currentQuest.hasLostItem)
         {
             achievedSatisfaction += 30;
         }
         achievedSatisfaction += givenGoldCount;
         achievedSatisfaction += givenXpCount;
         heroSatisfaction = Mathf.Min(1.0f, achievedSatisfaction/targetSatisfaction);
+        satisfactionSlider.value = heroSatisfaction;
         //Debug.Log($"ComputeSatisfaction : Target {targetSatisfaction}, got {achievedSatisfaction}");
-        if(heroSatisfaction >= 0.995f)
+        if (heroSatisfaction >= 0.995f)
         {
             SetReady();
         }
@@ -144,12 +150,21 @@ public class NegotiationDisplay : MonoBehaviour
         }
     }
 
+    public float ComputeChancesOfSuccess()
+    {
+        return 1.0f;
+    }
+
     public void OnValidateButton()
     {
         GameLibrary.PlayerXpManager.RemoveXp(givenXpCount);
+        GameLibrary.PlayerXpManager.AddXp(GameLibrary.StaticXpGainedByPlayerPerQuest);
         GameLibrary.PlayerGoldManager.RemoveGold(givenGoldCount);
-        GameLibrary.HeroDisplay.GetCurrentHero();
-
+        GameLibrary.HeroQueue.AssignQuestToFirstHero(currentQuest, ComputeChancesOfSuccess());
+        GameLibrary.HeroQueue.NextQueueTurn();
+        currentQuest = null;
+        GameLibrary.QuestManager.RerollQuests();
+        Hide();
     }
 
     public void SetReady()
@@ -167,18 +182,12 @@ public class NegotiationDisplay : MonoBehaviour
     public void Hide()
     {
         isDisplayed = false;
-        foreach(GameObject displayElement in displayElements)
-        {
-            displayElement.SetActive(false);
-        }
+        panelHider.enabled = true;
     }
 
     public void Show()
     {
         isDisplayed = true;
-        foreach (GameObject displayElement in displayElements)
-        {
-            displayElement.SetActive(true);
-        }
+        panelHider.enabled = false;
     }
 }

@@ -6,6 +6,8 @@ public class HeroQueue : MonoBehaviour
 {
     private List<Hero> heroQueue;
     public int queueSize;
+    public HeroQueueDisplay heroQueueDisplay;
+    public HeroDisplay heroDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -14,8 +16,16 @@ public class HeroQueue : MonoBehaviour
         Hero.numberOfHerosGenerated = 0;
         for (int i = 0; i < queueSize; i++)
         {
-            heroQueue.Add(new Hero());
+            heroQueue.Add(Hero.RandomHero());
         }
+        ActualizeQueueDisplay();
+        HeroArrival();
+        heroDisplay.displayHero(heroQueue[0]);
+    }
+
+    public void AssignQuestToFirstHero(Quest quest, float chancesOfSuccess)
+    {
+        heroQueue[0].AssignQuest(quest, chancesOfSuccess);
     }
 
     void EnqueueNewHero()
@@ -23,6 +33,7 @@ public class HeroQueue : MonoBehaviour
         Hero newHero = Hero.RandomHero();
         Debug.Log($"Created new hero with ID {newHero.heroId}");
         heroQueue.Add(newHero);
+        ActualizeQueueDisplay();
     }
 
     public void ResetFirstPosition()
@@ -35,10 +46,12 @@ public class HeroQueue : MonoBehaviour
         Hero swappedHero = heroQueue[0];
         heroQueue.RemoveAt(0);
         heroQueue.Add(swappedHero);
+        ActualizeQueueDisplay();
     }
 
     public void HeroArrival()
     {
+        ActualizeQueueDisplay();
         Hero firstHero = heroQueue[0];
         if (firstHero.hasQuestAssigned)
         {
@@ -55,5 +68,11 @@ public class HeroQueue : MonoBehaviour
     {
         PutFirstInLastPosition();
         HeroArrival();
+        heroDisplay.displayHero(heroQueue[0]);
+    }
+
+    public void ActualizeQueueDisplay()
+    {
+        heroQueueDisplay.SetHeroIcons(heroQueue);
     }
 }
