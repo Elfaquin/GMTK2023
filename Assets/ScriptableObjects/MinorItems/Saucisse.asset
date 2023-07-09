@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Saucisse
   m_EditorClassIdentifier: 
   sprite: {fileID: -1839983817, guid: 92bb0b05810c1b546bb7ab6221173451, type: 3}
-  displayName: Pate
+  displayName: Pate en croute
   enumValue: 0
   goldCount: 10

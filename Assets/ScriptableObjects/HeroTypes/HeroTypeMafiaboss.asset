@@ -37,7 +37,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   displayName: Crook
-  swaggName: The Crook
+  swaggName: Crook
   icon: {fileID: 100802219, guid: 2eda6b4124fe3bc40a0d9175cafccfca, type: 3}
   maxLevel: 2
   characterSprites:
