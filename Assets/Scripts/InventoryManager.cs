@@ -5,21 +5,25 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public List<ItemEnum> fetchingItems;
-	[SerializeField] private TMPro.TMP_Text cat_text;
 	public List<ItemEnum> items;
     public List<ItemDisplayer> itemDisplayers;
     public int gold;
 
     private int numberOfCats = 0;
+    [SerializeField] private Transform catContainer;
+    [SerializeField] private Transform catPrefab;
 
-    public bool CanHaveACat() {
+	public bool CanHaveACat() {
         return numberOfCats < GameLibrary.PlayerXpManager.GetMaxZone();
 	}
 
 	public bool AddCat() {
 		numberOfCats++;
 
-        cat_text.text = ("" + numberOfCats);
+        var cat = Instantiate(catPrefab);
+        cat.SetParent(catContainer);
+        cat.localScale = Vector3.one;
+
         LogsWindow.Event_CollectedCat(numberOfCats);
 
 		return numberOfCats >= 6;
