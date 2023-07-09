@@ -46,6 +46,8 @@ public class NegotiationDisplay : MonoBehaviour
     public Sprite unsatisfiedLogo;
     public Button validateButton;
 
+    public TextMeshProUGUI chancesOfSuccessUI;
+
     public float heroSatisfaction;
 
     // Start is called before the first frame update
@@ -108,6 +110,9 @@ public class NegotiationDisplay : MonoBehaviour
             if (majorItem.hasItem) majorItem.RemoveItem();
             majorItemName.text = "You won't receive any item.";
         }
+
+        chancesOfSuccessUI.text = $"Chances of success : {Mathf.Round(GameLibrary.HeroDisplay.GetCurrentHero().ComputeChancesOfSuccess(quest)*100.0f)}%";
+
         ComputeSatisfaction();
     }
 

@@ -57,7 +57,7 @@ public class Hero
             Debug.LogWarning("You are trying to resolve a null quest.");
             return false;
 		}
-		float success = Random.Range(0, this.chancesOfSuccess);
+		float success = Random.Range(0, this.ComputeChancesOfSuccess(assignedQuest));
 		if (success > 0)
         {
             LogsWindow.Event_QuestSucceeded(assignedQuest);
