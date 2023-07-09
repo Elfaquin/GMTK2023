@@ -29,8 +29,6 @@ public class InventoryManager : MonoBehaviour
 		return numberOfCats >= 6;
 	}
 
-
-
 	public bool HasItem(ItemEnum itemEnum)
     {
         foreach (ItemEnum gotItemEnum in items)
@@ -135,8 +133,39 @@ public class InventoryManager : MonoBehaviour
         return posessedItems;
     }
 
-    public bool IsFetching(ItemEnum item)
+    public List<ItemEnum> GetNotPossessedNorFetchedItems()
+    {
+        List<ItemEnum> posessedItems = new();
+        foreach (ItemEnum item in Enum.GetValues(typeof(ItemEnum)))
+        {
+            if (item == ItemEnum.NullItem)
+            {
+                continue;
+            }
+            if (!HasItem(item) && !IsInFetching(item))
+            {
+                posessedItems.Add(item);
+            }
+        }
+        return posessedItems;
+    }
+
+    public bool IsInFetching(ItemEnum item)
     {
         return fetchingItems.Contains(item);
+    }
+
+    public bool RemoveFetching(ItemEnum item)
+    {
+        if (!fetchingItems.Contains(item)) return false;
+        fetchingItems.Remove(item);
+        return true;
+    }
+
+    public bool AddFetching(ItemEnum item)
+    {
+        if (fetchingItems.Contains(item)) return false;
+        fetchingItems.Add(item);
+        return true;
     }
 }

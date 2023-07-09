@@ -170,8 +170,11 @@ public class NegotiationDisplay : MonoBehaviour
         GameLibrary.HeroQueue.NextQueueTurn();
         if(currentQuest.hasLostItem)
         {
-            Debug.Log($"Remove this motherfucking. {currentQuest.lostItem.enumValue}");
             GameLibrary.InventoryManager.RemoveItem(currentQuest.lostItem.enumValue);
+        }
+        if(currentQuest.hasFetchedItem)
+        {
+            GameLibrary.InventoryManager.AddFetching(currentQuest.fetchedItem.enumValue);
         }
         currentQuest = null;
         GameLibrary.QuestManager.RerollQuests();

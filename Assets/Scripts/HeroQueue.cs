@@ -58,7 +58,8 @@ public class HeroQueue : MonoBehaviour
             firstHero.ResolveQuest();
             if (firstHero.isDead)
             {
-                EnqueueNewHero();
+                Debug.LogWarning("The hero is dead.");
+                ResetFirstPosition();
                 HeroArrival();
             }
         }

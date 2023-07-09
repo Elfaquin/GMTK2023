@@ -68,6 +68,7 @@ public class Hero
             GameLibrary.PlayerGoldManager.AddGold(assignedQuest.minorItem.goldCount * assignedQuest.minorItemCount);
             if(assignedQuest.hasFetchedItem)
             {
+                GameLibrary.InventoryManager.RemoveFetching(assignedQuest.fetchedItem.enumValue);
                 GameLibrary.InventoryManager.AddItem(assignedQuest.fetchedItem.enumValue);
             }
             this.AddXp (GameLibrary.StaticXpGainedByHeroPerQuest * (assignedQuest.difficulty + 1));

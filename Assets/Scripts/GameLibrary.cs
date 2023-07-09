@@ -150,6 +150,14 @@ public class GameLibrary : MonoBehaviour
         return possessedItems[randomItem];
     }
 
+    public static ItemEnum RandomItemFromNotPossessedNorFetched()
+    {
+        List<ItemEnum> missingItems = InventoryManager.GetNotPossessedNorFetchedItems();
+        if (missingItems.Count == 0) return ItemEnum.NullItem;
+        int randomItem = Random.Range(0, missingItems.Count);
+        return missingItems[randomItem];
+    }
+
     public static MinorItem GetMinorItemFromEnum(MinorItemEnum minorItemEnum)
     {
         switch(minorItemEnum) 

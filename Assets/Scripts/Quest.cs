@@ -72,7 +72,7 @@ public class Quest
 
             case QuestTypeEnum.Dungeon:
                 newQuest.isKillingQuest = true;
-                ItemEnum missingItem = GameLibrary.RandomItemFromMissing();
+                ItemEnum missingItem = GameLibrary.RandomItemFromNotPossessedNorFetched();
 				newQuest.title = "Ransack the dungeon of '"+ random_str(DUNGEON_NAMES) + "'";
 				newQuest.description = "Destroying this dungeon seems like a good oppotunity.";
 				if(missingItem == ItemEnum.NullItem) {
@@ -91,7 +91,7 @@ public class Quest
 				break;
             case QuestTypeEnum.Fetch:
                 newQuest.isKillingQuest = false;
-				ItemEnum missingItem2 = GameLibrary.RandomItemFromMissing();
+				ItemEnum missingItem2 = GameLibrary.RandomItemFromNotPossessedNorFetched();
                 if (missingItem2 == ItemEnum.NullItem)
                     newQuest.hasFetchedItem = false;
                 else
@@ -146,11 +146,17 @@ public class Quest
     public bool isImpossible()
     {
         // Condition 1 : if the fetched item is already in the inventory
-        if(hasFetchedItem)
+        // Condition 3 : if the fetched item is already in fetching
+        if (hasFetchedItem)
         {
-            if(GameLibrary.InventoryManager.HasItem(fetchedItem.enumValue) == true)
+            if(GameLibrary.InventoryManager.HasItem(fetchedItem.enumValue) == true) 
             {
-                Debug.LogWarning($"Quest impossible : wants to fetch the item {fetchedItem.enumValue}");
+                Debug.LogWarning($"Quest impossible : wants to fetch the possessed item {fetchedItem.enumValue}");
+                return true;
+            }
+            if (GameLibrary.InventoryManager.IsInFetching(fetchedItem.enumValue) == true)
+            {
+                Debug.LogWarning($"Quest impossible : wants to fetch the fetched item {fetchedItem.enumValue}");
                 return true;
             }
         }
@@ -163,6 +169,7 @@ public class Quest
                 return true;
             }
         }
+
         return false;
     }
 
