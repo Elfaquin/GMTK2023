@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.95
+  m_fontSize: 19.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2708,7 +2708,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.2
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4204,7 +4204,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58.35
+  m_fontSize: 62.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6568,8 +6568,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   herosMaxLevel: 10
-  herosXpAtMaxLevel: 800
-  staticXpGainedByPlayerPerQuest: 50
+  herosXpAtMaxLevel: 4000
+  staticXpGainedByPlayerPerQuest: 10
+  pauseDuration: 1.5
   chancesToGetItemGivingQuest: 0.4
 --- !u!1 &674961100
 GameObject:
@@ -9730,7 +9731,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.1
+  m_fontSize: 19.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10074,7 +10075,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.75
+  m_fontSize: 28.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11100,8 +11101,8 @@ MonoBehaviour:
   xpAtStart: 0
   maxLevel: 10
   maxXp: 5000
-  xpGainPerBottle: 50
-  xpBottleCostInGoldCurrencyWithoutInflation: 10
+  xpGainPerBottle: 75
+  xpBottleCostInGoldCurrencyWithoutInflation: 15
 --- !u!114 &1201223967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17134,7 +17135,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.85
+  m_fontSize: 45.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
