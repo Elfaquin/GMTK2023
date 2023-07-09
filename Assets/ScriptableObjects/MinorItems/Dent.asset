@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 358968178, guid: 92bb0b05810c1b546bb7ab6221173451, type: 3}
   displayName: Wolf Tooth
-  goldCount: 6
+  enumValue: 0
+  goldCount: 12

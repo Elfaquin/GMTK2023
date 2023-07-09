@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -507443224, guid: 92bb0b05810c1b546bb7ab6221173451, type: 3}
   displayName: Spring
-  goldCount: 2
+  enumValue: 0
+  goldCount: 4
