@@ -33,6 +33,7 @@ public class GameLibrary : MonoBehaviour
     [SerializeField] private List<Sprite> difficultySprites;
     [SerializeField] private List<Color> questRarityColors;
     [SerializeField] private HeroDisplay heroDisplay;
+    [SerializeField] private QuestsManager questManager;
 
     public static InventoryManager InventoryManager { get { return Instance.inventoryManager; } }
     public static NegotiationDisplay NegotiationDisplay { get { return Instance.negotiationDisplay; } }
@@ -40,6 +41,7 @@ public class GameLibrary : MonoBehaviour
     public static PlayerGoldManager PlayerGoldManager { get { return Instance.playerGoldManager; } }
     public static PlayerXpManager PlayerXpManager { get { return Instance.playerXpManager; } }
     public static HeroDisplay HeroDisplay { get { return Instance.heroDisplay; } }
+    public static QuestsManager QuestManager { get { return Instance.questManager; } }
 
     // Various Game Design parameters
     [SerializeField] private float chancesToGetItemGivingQuest = 0.4f;

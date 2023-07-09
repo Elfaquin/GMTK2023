@@ -19,15 +19,12 @@ public class QuestDisplayer : MonoBehaviour
     // GUI
     [SerializeField] Image difficultyImage;
     [SerializeField] TextMeshProUGUI heroTypeText;
-    [SerializeField] Image backgroundImage; // (Quest colour)
     [SerializeField] Image descriptionImage;
     [SerializeField] TextMeshProUGUI description;
     //[SerializeField] List<Image> guysPortraits;
     [SerializeField] Image guyPortrait;
-    [SerializeField] HeroDisplay heroManager;
     [SerializeField] Button questButton;
     [SerializeField] Sprite spriteOfEmptyGuy;
-    [SerializeField] QuestsManager questsManager;
     [SerializeField] Image frameImage;
 
     private bool hasHeroTemporarilyAssigned;
@@ -93,7 +90,7 @@ public class QuestDisplayer : MonoBehaviour
      */
     public void OnQuestSelected()
     {
-        Hero assigned_hero = heroManager.GetCurrentHero();
+        Hero assigned_hero = GameLibrary.HeroDisplay.GetCurrentHero();
         if(assigned_hero != null && !hasHeroTemporarilyAssigned)
         {
             /*bool isAdded = currentQuest.AddGuy(assigned_hero);
@@ -107,7 +104,7 @@ public class QuestDisplayer : MonoBehaviour
             currentQuest.SetHero(assigned_hero);
             hasHeroTemporarilyAssigned = true;
             ActualizeDisplay();
-            questsManager.OnAnyQuestDisplayerSelected(displayerId);
+            GameLibrary.QuestManager.OnAnyQuestDisplayerSelected(displayerId);
             GameLibrary.NegotiationDisplay.SetNewQuest(currentQuest);
         }
         else Debug.LogError("Le héros est nul.");
