@@ -22,7 +22,7 @@ public class QuestDisplayer : MonoBehaviour
     [SerializeField] Image difficultyImage;
     [SerializeField] TextMeshProUGUI heroTypeText;
     [SerializeField] TextMeshProUGUI questTypeText;
-    [SerializeField] Image descriptionImage;
+    [SerializeField] Image heroTypeImage;
     [SerializeField] TextMeshProUGUI description;
     //[SerializeField] List<Image> guysPortraits;
     [SerializeField] Image guyPortrait;
@@ -34,6 +34,8 @@ public class QuestDisplayer : MonoBehaviour
     [SerializeField] ItemDisplayer fetchedtemImageUI;
     [SerializeField] ItemDisplayer minorItemImageUI;
     [SerializeField] TextMeshProUGUI obtainedMoneyText;
+
+    [SerializeField] Image LockedImage;
 
     private bool hasHeroTemporarilyAssigned;
 
@@ -56,13 +58,16 @@ public class QuestDisplayer : MonoBehaviour
 
     public void ActualizeDisplay()
     {
+        Debug.Log($"{transform.name}. Quest : {currentQuest.title}");
         difficultyImage.sprite = GameLibrary.GetDifficultySprite(currentQuest.difficulty);
         heroTypeText.text = GameLibrary.GetHeroTypeFromEnum(currentQuest.heroType).displayName;
+        Debug.Log($"{transform.name} : the quest is {currentQuest.type.displayName}");
         questTypeText.text = currentQuest.type.displayName;
         Color frameColor = GameLibrary.GetRarityColor(currentQuest.rarity);
         frameImage.color = frameColor;
         frameImage.enabled = false;
         frameImage.enabled = true;
+        heroTypeImage.sprite = GameLibrary.GetHeroTypeFromEnum(currentQuest.heroType).icon;
         if (currentQuest.hasFetchedItem)
         {
             fetchedtemImageUI.SetItem(currentQuest.fetchedItem);
@@ -155,16 +160,28 @@ public class QuestDisplayer : MonoBehaviour
     {
         isLocked = true;
         questButton.interactable = false;
-    }
-
-    public bool IsAccessibleAtThisLevel()
-    {
-        return (GameLibrary.PlayerXpManager.currentLevel >= this.accessibleAtLevel);
+        if (IsAccessibleAtThisLevel() == false) ShowLockedImage();
     }
 
     public void Unlock()
     {
         isLocked = false;
         questButton.interactable = true;
+        HideLockedImage();
+    }
+
+    public void ShowLockedImage()
+    {
+        LockedImage.enabled = true;
+    }
+
+    public void HideLockedImage()
+    {
+        LockedImage.enabled = false;
+    }
+
+    public bool IsAccessibleAtThisLevel()
+    {
+        return (GameLibrary.PlayerXpManager.currentLevel >= this.accessibleAtLevel);
     }
 }

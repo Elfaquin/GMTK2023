@@ -7,14 +7,6 @@ public class CatsDisplay : MonoBehaviour
 {
     public List<Image> catsDisplay;
 
-    private void Start()
-    {
-        foreach (var c in catsDisplay)
-        {
-            c.enabled = false;
-        }
-    }
-
     public void DisplayOneCat()
     {
         foreach (var cat in catsDisplay)

@@ -45,8 +45,9 @@ public class Hero
     public float ComputeChancesOfSuccess(Quest assignedQuest)
     {
         float chancesOfSuccess = 1.0f;
-        float randomFactor = Random.Range(-0.1f, 0.1f);
-        chancesOfSuccess = Mathf.Max(0.08f, level/(assignedQuest.difficulty*2)-randomFactor);
+        chancesOfSuccess = Mathf.Max(0.08f, level/((float)(assignedQuest.difficulty+1)*2));
+        if (heroType == GameLibrary.GetHeroTypeFromEnum(assignedQuest.heroType)) { chancesOfSuccess += 0.20f; }
+        Debug.Log($"Chances of success computation: {level} over {(float)(assignedQuest.difficulty + 1) * 2} equals {chancesOfSuccess}");
         return chancesOfSuccess;
     }
 
@@ -57,8 +58,11 @@ public class Hero
             Debug.LogWarning("You are trying to resolve a null quest.");
             return false;
 		}
-		float success = Random.Range(0, this.ComputeChancesOfSuccess(assignedQuest));
-		if (success > 0)
+
+		float success = Random.Range(0, 1.0f);
+        float randomFactor = Random.Range(-0.05f, 0.05f);
+
+		if (success > Mathf.Max(ComputeChancesOfSuccess(assignedQuest) + randomFactor))
         {
             LogsWindow.Event_QuestSucceeded(assignedQuest);
             GameLibrary.PlayerGoldManager.AddGold(assignedQuest.minorItem.goldCount * assignedQuest.minorItemCount);

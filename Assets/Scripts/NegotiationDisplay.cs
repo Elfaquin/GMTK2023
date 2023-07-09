@@ -111,7 +111,8 @@ public class NegotiationDisplay : MonoBehaviour
             majorItemName.text = "You won't receive any item.";
         }
 
-        chancesOfSuccessUI.text = $"Chances of success : {Mathf.Round(GameLibrary.HeroDisplay.GetCurrentHero().ComputeChancesOfSuccess(quest)*100.0f)}%";
+        float chancesOfSucces = Mathf.Round(GameLibrary.HeroDisplay.GetCurrentHero().ComputeChancesOfSuccess(quest) * 100.0f);
+        chancesOfSuccessUI.text = $"Chances of success : {Mathf.Max(chancesOfSucces-5, 8)}% - {Mathf.Min(100,chancesOfSucces+5)}%";
 
         ComputeSatisfaction();
     }
