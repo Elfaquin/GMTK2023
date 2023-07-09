@@ -985,6 +985,10 @@ PrefabInstance:
       propertyPath: displayerId
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 794306617775745637, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
+      propertyPath: accessibleAtLevel
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1874448766361154550, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2379,6 +2383,10 @@ PrefabInstance:
     - target: {fileID: 794306617775745637, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
       propertyPath: displayerId
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 794306617775745637, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
+      propertyPath: accessibleAtLevel
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1874448766361154550, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11847,6 +11855,7 @@ MonoBehaviour:
   prevLevelXpCount: {fileID: 875449924}
   currentXpCount: {fileID: 2042974546}
   XpSlider: {fileID: 784095378}
+  currentLevel: 0
   playerXpCurve:
     serializedVersion: 2
     m_Curve:
@@ -16261,6 +16270,10 @@ PrefabInstance:
     - target: {fileID: 794306617775745637, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
       propertyPath: displayerId
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 794306617775745637, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
+      propertyPath: accessibleAtLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1874448766361154550, guid: e73a33b0707eec6418e1ac019dd58404, type: 3}
       propertyPath: m_AnchorMax.y

@@ -159,7 +159,7 @@ public class QuestDisplayer : MonoBehaviour
 
     public bool IsAccessibleAtThisLevel()
     {
-        return (GameLibrary.PlayerXpManager.current this.accessibleAtLevel > 0);
+        return (GameLibrary.PlayerXpManager.currentLevel >= this.accessibleAtLevel);
     }
 
     public void Unlock()

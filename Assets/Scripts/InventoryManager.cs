@@ -15,6 +15,8 @@ public class InventoryManager : MonoBehaviour
     public AnimationCurve xpCurve;
     public int level;
 
+
+
     public bool HasItem(ItemEnum itemEnum)
     {
         foreach (var itemDisplayer in itemDisplayers)
