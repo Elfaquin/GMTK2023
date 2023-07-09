@@ -79,6 +79,9 @@ public class LogsWindow : MonoBehaviour {
 		ExpPoint,
 		ExpLevel,
 		UnlockedZone,
+		//
+
+
 	};
 
 	// =================================

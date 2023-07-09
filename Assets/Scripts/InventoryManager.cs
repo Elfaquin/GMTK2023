@@ -90,7 +90,6 @@ public class InventoryManager : MonoBehaviour
             }
             if(!HasItem(item))
             {
-                Debug.Log($"{gameObject.name} - missing Item : {item}");
                 missingItems.Add(item);
             }
         }
@@ -108,7 +107,6 @@ public class InventoryManager : MonoBehaviour
             }
             if (HasItem(item))
             {
-                Debug.Log($"{gameObject.name} - got Item : {item}");
                 posessedItems.Add(item);
             }
         }

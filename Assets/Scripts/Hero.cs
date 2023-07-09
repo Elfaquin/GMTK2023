@@ -1,22 +1,102 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class Hero
 {
+    public static int numberOfHerosGenerated;
     public HeroType heroType;
     public int level;
+    public int heroId;
+    public bool isDead;
     public string displayName;
+    [SerializeField] private Quest assignedQuest;
+    public bool hasQuestAssigned;
+    [SerializeField] private float chancesOfSuccess;
     public float xp { get; private set; }
 
     public static Hero RandomHero()
     {
         Hero generatedHero = new Hero();
+        generatedHero.heroId = numberOfHerosGenerated++;
         HeroTypeEnum heroTypeEnum = GameLibrary.RandomHeroType();
         generatedHero.heroType = GameLibrary.GetHeroTypeFromEnum(heroTypeEnum);
-        generatedHero.level = Random.Range(0, generatedHero.heroType.maxLevel + 1);
-        generatedHero.xp = Random.Range(0, generatedHero.heroType.GetXpForNextLevel(generatedHero.level));
+        generatedHero.level = 1;
+        generatedHero.xp = 0;
         generatedHero.displayName = "Totally Random Name";
+        generatedHero.isDead = false;
+        generatedHero.hasQuestAssigned = false;
         return generatedHero;
+    }
+
+    public void AssignQuest(Quest assignedQuest, float chancesOfSuccess)
+    {
+        this.assignedQuest = assignedQuest;
+        this.chancesOfSuccess = chancesOfSuccess;
+        hasQuestAssigned = true;
+    }
+
+    public bool ResolveQuest()
+    {
+        if (this.assignedQuest == null)
+        {
+            Debug.LogWarning("You are trying to resolve a null quest.");
+            return false;
+        }
+        float success = UnityEngine.Random.Range(0, this.chancesOfSuccess);
+        if (success > 0)
+        {
+            LogsWindow.Event_QuestSucceeded(assignedQuest);
+            GameLibrary.PlayerGoldManager.AddGold(assignedQuest.minorItem.goldCount * assignedQuest.minorItemCount);
+            if(assignedQuest.hasFetchedItem)
+            {
+                GameLibrary.InventoryManager.AddItem(assignedQuest.fetchedItem.enumValue);
+            }
+            this.AddXp (GameLibrary.StaticXpGainedByHeroPerQuest * (assignedQuest.difficulty + 1));
+            this.AddXp (assignedQuest.xpOnSuccess);
+            return true;
+        }
+        else
+        {
+            if(assignedQuest.isKillingQuest)
+            {
+                LogsWindow.Event_QuestFailed(assignedQuest);
+                LogsWindow.Event_HeroDied(this);
+                Die();
+            }
+            else
+            {
+                LogsWindow.Event_QuestFailed(assignedQuest);
+            }
+            return false;
+        }
+    }
+
+    void Die()
+    {
+        isDead = true;
+    }
+
+    void AddXp(int xp)
+    {
+        this.xp += xp;
+        while (this.xp + xp > GetNextLevelXp())
+        {
+            LevelUp();
+        }
+    }
+
+    int GetNextLevelXp()
+    {
+        float ratio = GameLibrary.HeroXpCurve.Evaluate((float)(level + 1) / GameLibrary.HerosMaxLevel);
+        return (int)(ratio * GameLibrary.HerosXpAtMaxLevel);
+    }
+
+    void LevelUp()
+    {
+        this.level += 1;
+        LogsWindow.Event_HeroLevelup(this);
     }
 }

@@ -31,6 +31,7 @@ public class Quest
     public HeroTypeEnum heroType;
     public int rarity;
     public bool isKillingQuest;
+    public int xpOnSuccess;
 
     /**
      * Insatantiates a Quest with random attributes.
@@ -96,10 +97,13 @@ public class Quest
 
         newQuest.difficulty = UnityEngine.Random.Range(0, maxDifficulty);
         newQuest.minorItem = GameLibrary.GetMinorItemFromEnum(GameLibrary.RandomMinorItem());
-        newQuest.minorItemCount = newQuest.difficulty;
+        newQuest.minorItemCount = newQuest.difficulty+1;
         newQuest.heroType = GameLibrary.RandomHeroType();
         newQuest.rarity = UnityEngine.Random.Range(0, nbRarity);
         newQuest.hasAssignedHero = false;
+
+        newQuest.xpOnSuccess = 0;
+
         return newQuest;
     }
 
@@ -143,7 +147,6 @@ public class Quest
         }
         else
         {
-            Debug.Log("Hero unset.");
             assignedHero = null;
             hasAssignedHero = false;
             return true;

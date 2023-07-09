@@ -29,7 +29,6 @@ public class HeroDisplay : MonoBehaviour
         HeroType heroType = hero.heroType;
         if (hero.level > heroType.maxLevel) throw new System.Exception("Tu te fous de ma gueule avec ce level là");
         heroSpriteImage.sprite = heroType.characterSprites[hero.level];
-        Debug.Log($"Normalized XP : {hero.heroType.GetXpNormalized(hero.xp, hero.level)}");
         setXpBar(hero.heroType.GetXpNormalized(hero.xp, hero.level));
         heroNameUI.text = hero.displayName;
         heroTypeUI.text = hero.heroType.swaggName;

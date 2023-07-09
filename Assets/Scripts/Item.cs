@@ -6,7 +6,8 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public Sprite sprite;
-    public string displayName;    
+    public string displayName;
+    public ItemEnum enumValue;
 }
 
 

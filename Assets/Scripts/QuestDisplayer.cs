@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class QuestDisplayer : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class QuestDisplayer : MonoBehaviour
     [SerializeField] Sprite spriteOfEmptyGuy;
     [SerializeField] Image frameImage;
 
+    [SerializeField] ItemDisplayer lostItemImageUI;
+    [SerializeField] ItemDisplayer fetchedtemImageUI;
+    [SerializeField] ItemDisplayer minorItemImageUI;
+    [SerializeField] TextMeshProUGUI obtainedMoneyText;
+
     private bool hasHeroTemporarilyAssigned;
 
     private void Start()
@@ -48,16 +54,27 @@ public class QuestDisplayer : MonoBehaviour
 
     public void ActualizeDisplay()
     {
+        Debug.Log($"{transform.name}: The currentQuest is {currentQuest}.");
         if(!isLocked)
         {
             difficultyImage.sprite = GameLibrary.GetDifficultySprite(currentQuest.difficulty);
             heroTypeText.text = GameLibrary.GetHeroTypeFromEnum(currentQuest.heroType).displayName;
-            Debug.Log($"Rarity : {currentQuest.rarity}");
             Color frameColor = GameLibrary.GetRarityColor(currentQuest.rarity);
-            Debug.Log($"Color : {frameColor}");
             frameImage.color = frameColor;
             frameImage.enabled = false;
             frameImage.enabled = true;
+            if (currentQuest.hasFetchedItem)
+            {
+                fetchedtemImageUI.SetItem(currentQuest.fetchedItem);
+            }
+            else if (fetchedtemImageUI.hasItem) fetchedtemImageUI.RemoveItem();
+            if(currentQuest.hasLostItem)
+            {
+                lostItemImageUI.SetItem(currentQuest.lostItem);
+            }
+            else if(lostItemImageUI.hasItem) lostItemImageUI.RemoveItem();
+            minorItemImageUI.SetItem(currentQuest.minorItem);
+            obtainedMoneyText.text = (currentQuest.minorItemCount * currentQuest.minorItem.goldCount).ToString();
             /*int i=0;
             int nbGuys = currentQuest.guysList.Count;
             foreach (Image guyPortrait in guysPortraits)

@@ -14,6 +14,7 @@ public class PlayerXpManager : MonoBehaviour
     int currentLevel;
     int currentXp;
     public AnimationCurve playerXpCurve;
+    public int xpAtStart;
     public int maxLevel;
     public int maxXp;
     public int xpGainPerBottle;
@@ -22,7 +23,7 @@ public class PlayerXpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentXp = 0;
+        currentXp = xpAtStart;
         ActualizeDisplay();
     }
 
@@ -36,11 +37,15 @@ public class PlayerXpManager : MonoBehaviour
     public void AddXp(int count)
     {
         if (currentLevel == maxLevel) return;
+        LogsWindow.Event_GainExperience(count);
+
         if(currentXp + count >= GetNextLevelXp())
         {
             currentLevel += 1;
+            LogsWindow.Event_GainLevel(currentLevel);
         }
         currentXp += count;
+
         ActualizeDisplay();
     }
 
@@ -61,21 +66,19 @@ public class PlayerXpManager : MonoBehaviour
         prevLevelXpCount.text = $"Level {currentLevel}: {GetPreviousLevelXp()}";
         currentXpCount.text = currentXp.ToString();
         float ratio = (float)(currentXp - GetPreviousLevelXp()) / (GetNextLevelXp() - GetPreviousLevelXp());
-        Debug.Log("Ratio : " + ratio);
         XpSlider.value = ratio;
+        GameLibrary.InventoryManager.xp = currentXp;
     }
 
     int GetNextLevelXp()
     {
         float level = playerXpCurve.Evaluate((float)(currentLevel+1)/maxLevel);
-        Debug.Log("Level : "+ level);
         return (int)(level * maxXp);
     }
 
     int GetPreviousLevelXp()
     {
         float level = playerXpCurve.Evaluate((float)currentLevel/maxLevel);
-        Debug.Log("Level : " + level);
         return (int)(level * maxXp);
     }
 }

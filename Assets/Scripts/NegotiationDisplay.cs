@@ -10,6 +10,8 @@ public class NegotiationDisplay : MonoBehaviour
 {
     [SerializeField] bool isDisplayed;
 
+    public List<GameObject> displayElements;
+
     public TextMeshProUGUI randomText1;
     public TextMeshProUGUI randomText2;
 
@@ -86,20 +88,20 @@ public class NegotiationDisplay : MonoBehaviour
         if(quest.hasLostItem)
         {
             givenItem.SetItem(quest.lostItem);
-            givenItemText.text = $"You give a {quest.lostItem.displayName}";
+            givenItemText.text = $"The hero will receive your {quest.lostItem.displayName} as a reward.";
         }
         else
         {
             if(givenItem.hasItem) givenItem.RemoveItem();
-            givenItemText.text = "No item given.";
+            givenItemText.text = "The hero won't receive any item as a reward.";
         }
         minorItem.SetItem(quest.minorItem);
         goldEquivalent.text = quest.minorItem.goldCount.ToString();
-        minorItemName.text = quest.minorItem.displayName;
+        minorItemName.text = $"The hero will bring you {quest.minorItem.displayName} that you can sell.";
         if(quest.hasFetchedItem)
         {
             majorItem.SetItem(quest.fetchedItem);
-            majorItemName.text = quest.fetchedItem.displayName;
+            majorItemName.text = $"The hero will fetch a {quest.fetchedItem.displayName} for you.";
         }
         ComputeSatisfaction();
     }
@@ -113,6 +115,7 @@ public class NegotiationDisplay : MonoBehaviour
 
     public void OnXpSliderValueChanged()
     {
+        Debug.Log($"Available XP : {GameLibrary.InventoryManager.xp}");
         givenXpCount = (int)(givenXp.value * GameLibrary.InventoryManager.xp);
         givenXpText.text = $"{givenXpCount}/{GameLibrary.InventoryManager.xp}";
         ComputeSatisfaction();
@@ -120,7 +123,7 @@ public class NegotiationDisplay : MonoBehaviour
 
     public void ComputeSatisfaction()
     {
-        float targetSatisfaction = 0;
+        float targetSatisfaction = 10;
         targetSatisfaction += (int)(Mathf.Pow(currentQuest.assignedHero.level, 2.0f));
         float achievedSatisfaction = 0;
         if(currentQuest.hasFetchedItem)
@@ -130,6 +133,7 @@ public class NegotiationDisplay : MonoBehaviour
         achievedSatisfaction += givenGoldCount;
         achievedSatisfaction += givenXpCount;
         heroSatisfaction = Mathf.Min(1.0f, achievedSatisfaction/targetSatisfaction);
+        //Debug.Log($"ComputeSatisfaction : Target {targetSatisfaction}, got {achievedSatisfaction}");
         if(heroSatisfaction >= 0.995f)
         {
             SetReady();
@@ -163,75 +167,18 @@ public class NegotiationDisplay : MonoBehaviour
     public void Hide()
     {
         isDisplayed = false;
-        questTitle.enabled = false;
-        questDescription.enabled = false;
-        questType.enabled = false;
-        givenXpText.enabled = false;
-        givenGoldText.enabled = false;
-        goldEquivalent.enabled = false;
-        minorItem.enabled = false;
-        majorItem.enabled = false;
-        
-        givenItem.Hide();
-        minorItem.Hide();
-        majorItem.Hide();
-        
-        satisfactionLogoUI.enabled = false;
-        validateButton.enabled = false;
-        givenStuffTitle.enabled = false;
-        receivedStuffTitle.enabled = false;
-        minorItemName.enabled = false;
-        majorItemName.enabled = false;
-        givenItemText.enabled = false;
-        questHeroType.enabled = false;
-        questHeroTypeImage.enabled = false;
-        questHeroTypeImage.gameObject.transform.parent.GetComponent<Image>().enabled = false; // Background
-        questTypeImage.enabled = false;
-        givenXp.gameObject.SetActive(false);
-        givenGold.gameObject.SetActive(false);
-        satisfactionSlider.gameObject.SetActive(false);
-
-        randomText1.enabled = false;
-        randomText2.enabled = false;
-
-        validateButton.gameObject.SetActive(false);
+        foreach(GameObject displayElement in displayElements)
+        {
+            displayElement.SetActive(false);
+        }
     }
 
     public void Show()
     {
         isDisplayed = true;
-        questTitle.enabled = true;  
-        questDescription.enabled = true;
-        givenXpText.enabled = true;
-        givenGoldText.enabled = true;
-        goldEquivalent.enabled = true;
-        minorItem.enabled = true;
-        majorItem.enabled = true;
-        givenGold.enabled = true;
-        givenXp.enabled = true;
-        givenItem.Show();
-        minorItem.Show();
-        majorItem.Show();
-        satisfactionSlider.enabled = true;
-        satisfactionLogoUI.enabled = true;
-        validateButton.enabled = true;
-        givenStuffTitle.enabled = true;
-        receivedStuffTitle.enabled = true;
-        minorItemName.enabled = true;
-        majorItemName.enabled = true;
-        givenItemText.enabled = true;
-        questHeroType.enabled = true;
-        questHeroTypeImage.enabled = true;
-        questHeroTypeImage.gameObject.transform.parent.GetComponent<Image>().enabled = true; // Background
-        questTypeImage.enabled= true;
-        questType.enabled = true;
-        givenXp.gameObject.SetActive(true);
-        givenGold.gameObject.SetActive(true);
-        satisfactionSlider.gameObject.SetActive(true);
-
-        randomText1.enabled = true;
-        randomText2.enabled = true;
-
-        validateButton.gameObject.SetActive(true);
+        foreach (GameObject displayElement in displayElements)
+        {
+            displayElement.SetActive(true);
+        }
     }
 }

@@ -62,7 +62,6 @@ public class QuestsManager : MonoBehaviour
 
     public void OnAnyQuestDisplayerSelected(int questDisplayerIndex)
     {
-        Debug.Log($"INDEX PASSED = {questDisplayerIndex}");
         int i;
         for(i = 0; i < questDisplayers.Count ; i++)
         {

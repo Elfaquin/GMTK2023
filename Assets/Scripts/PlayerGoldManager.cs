@@ -33,5 +33,6 @@ public class PlayerGoldManager : MonoBehaviour
     void ActualizeDisplay()
     {
         goldText.text = currentGold.ToString();
+        GameLibrary.InventoryManager.gold = currentGold;
     }
 }

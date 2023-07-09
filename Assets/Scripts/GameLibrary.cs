@@ -34,6 +34,12 @@ public class GameLibrary : MonoBehaviour
     [SerializeField] private List<Color> questRarityColors;
     [SerializeField] private HeroDisplay heroDisplay;
     [SerializeField] private QuestsManager questManager;
+    [SerializeField] private HeroQueue heroQueue;
+
+    [SerializeField] private int staticXpGainedByHeroPerQuest;
+    [SerializeField] private AnimationCurve heroXpCurve;
+    [SerializeField] private int herosMaxLevel;
+    [SerializeField] private int herosXpAtMaxLevel;
 
     public static InventoryManager InventoryManager { get { return Instance.inventoryManager; } }
     public static NegotiationDisplay NegotiationDisplay { get { return Instance.negotiationDisplay; } }
@@ -41,7 +47,14 @@ public class GameLibrary : MonoBehaviour
     public static PlayerGoldManager PlayerGoldManager { get { return Instance.playerGoldManager; } }
     public static PlayerXpManager PlayerXpManager { get { return Instance.playerXpManager; } }
     public static HeroDisplay HeroDisplay { get { return Instance.heroDisplay; } }
+    public static HeroQueue HeroQueue { get { return Instance.heroQueue; } }
     public static QuestsManager QuestManager { get { return Instance.questManager; } }
+
+    public static int StaticXpGainedByHeroPerQuest { get { return Instance.staticXpGainedByHeroPerQuest; } }
+    public static AnimationCurve HeroXpCurve { get { return Instance.heroXpCurve; } }
+    public static int HerosMaxLevel { get { return Instance.herosMaxLevel; } }
+    public static int HerosXpAtMaxLevel { get { return Instance.herosXpAtMaxLevel; } }
+
 
     // Various Game Design parameters
     [SerializeField] private float chancesToGetItemGivingQuest = 0.4f;
