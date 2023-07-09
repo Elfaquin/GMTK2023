@@ -40,7 +40,7 @@ MonoBehaviour:
   swaggName: The Wiiziiizzward
   icon: {fileID: 1916280189, guid: 2eda6b4124fe3bc40a0d9175cafccfca, type: 3}
   maxLevel: 2
-  xpFactor: 1000
   characterSprites:
+  - {fileID: 21300000, guid: c9c81a41500202d49b7e5469e5ee13a3, type: 3}
   - {fileID: 21300000, guid: 403dfa4d9492c7744bc549bc5f02c312, type: 3}
   - {fileID: 21300000, guid: 933d4a80273f4c24cbb28c35d6f19075, type: 3}

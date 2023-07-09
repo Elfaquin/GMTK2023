@@ -40,7 +40,7 @@ MonoBehaviour:
   swaggName: The Knight
   icon: {fileID: 638121711, guid: 2eda6b4124fe3bc40a0d9175cafccfca, type: 3}
   maxLevel: 2
-  xpFactor: 1000
   characterSprites:
   - {fileID: 21300000, guid: 1bea15b9da18c8248b3b259ead3711b2, type: 3}
   - {fileID: 21300000, guid: b467bb56fd954ab4480da523da284522, type: 3}
+  - {fileID: 21300000, guid: 856a0cfbbc9afa044857a7adab6b1098, type: 3}

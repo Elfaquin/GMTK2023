@@ -42,5 +42,5 @@ MonoBehaviour:
   maxLevel: 2
   characterSprites:
   - {fileID: 21300000, guid: bca797be0808a6946ad4fcb62708e73a, type: 3}
-  - {fileID: 21300000, guid: 1c3619968e376fa48bf3d10a78abaf26, type: 3}
+  - {fileID: 21300000, guid: af8b644882553e14993283a80f4eaf6f, type: 3}
   - {fileID: 21300000, guid: 1c3619968e376fa48bf3d10a78abaf26, type: 3}
