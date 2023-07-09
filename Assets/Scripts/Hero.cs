@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class Hero
@@ -17,15 +13,23 @@ public class Hero
     [SerializeField] private float chancesOfSuccess;
     public float xp { get; private set; }
 
+    private static string[] HERO_NAMES = {
+        "fastAnCurious", "BadKarma", "AverageStudent", "IwilleatYou", "GimePasta", "jamailun", "Elfaquin", "perier", "Godzilla2023", "2fast4u", "iamicredible",
+        "ThaDuck", "xx_jhon_xx", "theo76523", "Steve", "TheMineGuy", "Piggy308", "SP64_luigi", "paulito_2", "my_usrn", "haroldFinch", "ThePaper", "ThinAnUgly",
+        "RedJhon", "waterlyguy", "melonman_xx", "AllGoodNAmesRgone", "block_me_pls", "iam_yourFriend", "45_dungeonbreaker", "toastedEggs", "BlueCactus",
+        "Ubikuity", "PurpleLand", "IStompYou", "AppleJeans", "where_choko_milk", "SaintBroseph", "FrostedBanana", "fatmanTheBat", "good_sandwich", "scp720",
+        "BreadPitt", "OmnipotentMe", "earthIsRound", "momIsNice", "sendFR", "Napoleon69", "PastaSauced", "PinkPenguin", "BronCorn", "melonSmasher", "unic0rns"
+    };
+
     public static Hero RandomHero()
     {
-        Hero generatedHero = new Hero();
+        Hero generatedHero = new();
         generatedHero.heroId = numberOfHerosGenerated++;
         HeroTypeEnum heroTypeEnum = GameLibrary.RandomHeroType();
         generatedHero.heroType = GameLibrary.GetHeroTypeFromEnum(heroTypeEnum);
         generatedHero.level = 1;
         generatedHero.xp = 0;
-        generatedHero.displayName = "Totally Random Name";
+        generatedHero.displayName = HERO_NAMES[Random.Range(0, HERO_NAMES.Length)];
         generatedHero.isDead = false;
         generatedHero.hasQuestAssigned = false;
         return generatedHero;
