@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6757227a6b9348a8668702ba8c9b5, type: 3}
+  m_Name: Clou
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 752992695, guid: 886802e45d54c7e4eb6b5f6f48831e99, type: 3}
+  displayName: Clou

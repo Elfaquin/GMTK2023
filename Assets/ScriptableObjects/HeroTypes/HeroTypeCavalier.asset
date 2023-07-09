@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddd9cc5d5e84db41a7620f2a92a5f7c, type: 3}
+  m_Name: HeroTypeCavalier
+  m_EditorClassIdentifier: 
+  xpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  displayName: Chevalier
+  swaggName: The Knight
+  icon: {fileID: 638121711, guid: 2eda6b4124fe3bc40a0d9175cafccfca, type: 3}
+  maxLevel: 2
+  xpFactor: 1000
+  characterSprites:
+  - {fileID: 21300000, guid: 72546abbda96d994098e5a1b9e0dc0b8, type: 3}
+  - {fileID: 21300000, guid: cb8212f50e2dab14e8b69ae9a9904c46, type: 3}
+  - {fileID: -590474189, guid: d5f73f87cd3b967459f76e3ffc427a73, type: 3}
