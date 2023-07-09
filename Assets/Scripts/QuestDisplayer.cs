@@ -58,10 +58,8 @@ public class QuestDisplayer : MonoBehaviour
 
     public void ActualizeDisplay()
     {
-        Debug.Log($"{transform.name}. Quest : {currentQuest.title}");
         difficultyImage.sprite = GameLibrary.GetDifficultySprite(currentQuest.difficulty);
         heroTypeText.text = GameLibrary.GetHeroTypeFromEnum(currentQuest.heroType).displayName;
-        Debug.Log($"{transform.name} : the quest is {currentQuest.type.displayName}");
         questTypeText.text = currentQuest.type.displayName;
         Color frameColor = GameLibrary.GetRarityColor(currentQuest.rarity);
         frameImage.color = frameColor;
@@ -129,7 +127,7 @@ public class QuestDisplayer : MonoBehaviour
             GameLibrary.QuestManager.OnAnyQuestDisplayerSelected(displayerId);
             GameLibrary.NegotiationDisplay.SetNewQuest(currentQuest);
         }
-        else if(assigned_hero == null) Debug.LogError("Le héros est nul.");
+        else if(assigned_hero == null) Debug.LogWarning("Le héros est nul.");
         else Debug.LogError("L'erreur étonnante.");
     }
 
@@ -183,5 +181,17 @@ public class QuestDisplayer : MonoBehaviour
     public bool IsAccessibleAtThisLevel()
     {
         return (GameLibrary.PlayerXpManager.currentLevel >= this.accessibleAtLevel);
+    }
+
+    public void StartPause()
+    {
+        //LockedImage.enabled = true;
+        questButton.interactable = false;
+    }
+
+    public void EndPause()
+    {
+        //LockedImage.enabled = false;
+        questButton.interactable = true;
     }
 }

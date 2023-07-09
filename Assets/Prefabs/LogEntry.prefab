@@ -285,6 +285,10 @@ MonoBehaviour:
   icon_moreExp: {fileID: 1706458087, guid: e1a1c57f907c22d45bc5d595e6abf583, type: 3}
   icon_moreLevel: {fileID: -72934223, guid: e1a1c57f907c22d45bc5d595e6abf583, type: 3}
   icon_newZone: {fileID: 1472337888, guid: e1a1c57f907c22d45bc5d595e6abf583, type: 3}
+  icon_lostlevel: {fileID: 0}
+  icon_win: {fileID: 0}
+  icon_lost: {fileID: 0}
+  icon_cat: {fileID: -776440656, guid: e1a1c57f907c22d45bc5d595e6abf583, type: 3}
 --- !u!1 &5535142999432697512
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,8 @@ public class MapButton : MonoBehaviour {
 		} else {
 			Open_Map();
 		}
-	}
+        AudioManager.PlaySoundEffect(AudioManager.SoundEffect.MapEffect);
+    }
 
 	private void Open_Map() {
 		// update

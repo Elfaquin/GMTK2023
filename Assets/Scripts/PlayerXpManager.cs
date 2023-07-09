@@ -57,6 +57,7 @@ public class PlayerXpManager : MonoBehaviour
 
         if(currentXp + count >= GetNextLevelXp())
         {
+            AudioManager.PlaySoundEffect(AudioManager.SoundEffect.Levelup);
             currentLevel += 1;
             LogsWindow.Event_GainLevel(currentLevel);
         }

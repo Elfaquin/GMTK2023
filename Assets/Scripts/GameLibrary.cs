@@ -42,6 +42,7 @@ public class GameLibrary : MonoBehaviour
     [SerializeField] private int herosMaxLevel;
     [SerializeField] private int herosXpAtMaxLevel;
     [SerializeField] private int staticXpGainedByPlayerPerQuest;
+    [SerializeField] private float pauseDuration;
 
     public static InventoryManager InventoryManager { get { return Instance.inventoryManager; } }
     public static NegotiationDisplay NegotiationDisplay { get { return Instance.negotiationDisplay; } }
@@ -57,6 +58,8 @@ public class GameLibrary : MonoBehaviour
     public static AnimationCurve HeroXpCurve { get { return Instance.heroXpCurve; } }
     public static int HerosMaxLevel { get { return Instance.herosMaxLevel; } }
     public static int HerosXpAtMaxLevel { get { return Instance.herosXpAtMaxLevel; } }
+
+    public static float PauseDuration { get { return Instance.pauseDuration; } }
 
 
     // Various Game Design parameters

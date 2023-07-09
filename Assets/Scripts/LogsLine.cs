@@ -23,8 +23,9 @@ public class LogsLine : MonoBehaviour {
 	[SerializeField] private Sprite icon_lostlevel;
 	[SerializeField] private Sprite icon_win;
 	[SerializeField] private Sprite icon_lost;
+	[SerializeField] private Sprite icon_cat;
 
-	public void SetValues(LogsWindow.LogsEventType iconType, string text) {
+    public void SetValues(LogsWindow.LogsEventType iconType, string text) {
 		informations.text = text;
 		switch(iconType) {
 			case LogsWindow.LogsEventType.QuestStarted:
@@ -60,10 +61,13 @@ public class LogsLine : MonoBehaviour {
 			case LogsWindow.LogsEventType.Win:
 				logo.sprite = icon_win;
 				break;
-			case LogsWindow.LogsEventType.Lost:
-				logo.sprite = icon_lost;
-				break;
-			default:
+            case LogsWindow.LogsEventType.Lost:
+                logo.sprite = icon_lost;
+                break;
+            case LogsWindow.LogsEventType.CollectedCat:
+                logo.sprite = icon_cat;
+                break;
+            default:
 				Debug.LogError("forgot to put case for even type: " + iconType);
 				break;
 		}

@@ -16,13 +16,25 @@ public class HeroDisplay : MonoBehaviour
     public TextMeshProUGUI heroCurrentXP;
     public TextMeshProUGUI xpForNextLevel;
 
+    private void Start()
+    {
+        AudioManager.PlaySoundEffect(AudioManager.SoundEffect.Greeting);
+    }
+
     public void setXpBar(float value)
     {
         xpBar.value = value;
     }
 
+    public void HideDisplay()
+    {
+        currentHero = null;
+        heroSpriteImage.enabled = false;
+    }
+
     public void displayHero(Hero hero)
     {
+        heroSpriteImage.enabled = true;
         currentHero = hero;
         HeroType heroType = hero.heroType;
         if (hero.level > GameLibrary.HerosMaxLevel) throw new System.Exception("Tu te fous de ma gueule avec ce level là");
@@ -51,6 +63,7 @@ public class HeroDisplay : MonoBehaviour
 
     public Hero GetCurrentHero()
     {
+        if(currentHero == null) return null;
         Debug.Log($"GetCurrentHero called for {currentHero.displayName}");
         return currentHero;
     }

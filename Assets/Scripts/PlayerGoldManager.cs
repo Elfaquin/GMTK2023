@@ -19,6 +19,7 @@ public class PlayerGoldManager : MonoBehaviour
 
     public void AddGold(int count)
     {
+        AudioManager.PlaySoundEffect(AudioManager.SoundEffect.Gold);
         currentGold += count;
         ActualizeDisplay();
         LogsWindow.Event_GainExperience(count);

@@ -45,9 +45,9 @@ public class Hero
     public float ComputeChancesOfSuccess(Quest assignedQuest)
     {
         float chancesOfSuccess = 1.0f;
-        chancesOfSuccess = Mathf.Max(0.08f, level/((float)(assignedQuest.difficulty+1)*2));
+        chancesOfSuccess = Mathf.Max(0.08f, level/ (float)(9 * Mathf.Log10(assignedQuest.difficulty * 9 + 2)));
         if (heroType == GameLibrary.GetHeroTypeFromEnum(assignedQuest.heroType)) { chancesOfSuccess += 0.20f; }
-        Debug.Log($"Chances of success computation: {level} over {(float)(assignedQuest.difficulty + 1) * 2} equals {chancesOfSuccess}");
+        Debug.Log($"Chances of success computation: {level} over {(float)(9*Mathf.Log10(assignedQuest.difficulty*9 + 2))} equals {chancesOfSuccess}");
         return chancesOfSuccess;
     }
 
@@ -62,7 +62,7 @@ public class Hero
 		float success = Random.Range(0, 1.0f);
         float randomFactor = Random.Range(-0.05f, 0.05f);
 
-		if (success > Mathf.Max(ComputeChancesOfSuccess(assignedQuest) + randomFactor))
+		if (success > Mathf.Max(ComputeChancesOfSuccess(assignedQuest) + randomFactor, 0.08f))
         {
             LogsWindow.Event_QuestSucceeded(assignedQuest);
             GameLibrary.PlayerGoldManager.AddGold(assignedQuest.minorItem.goldCount * assignedQuest.minorItemCount);
@@ -86,6 +86,7 @@ public class Hero
             {
                 LogsWindow.Event_QuestFailed(assignedQuest);
                 LogsWindow.Event_HeroDied(this);
+                Debug.LogWarning($"The hero died with {success} VS {Mathf.Max(ComputeChancesOfSuccess(assignedQuest) + randomFactor, 0.08f)}");
                 Die();
             }
             else
@@ -98,6 +99,7 @@ public class Hero
 
     void Die()
     {
+        AudioManager.PlaySoundEffect(AudioManager.SoundEffect.HeroDied);
         isDead = true;
     }
 

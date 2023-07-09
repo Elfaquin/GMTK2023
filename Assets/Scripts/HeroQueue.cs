@@ -69,6 +69,18 @@ public class HeroQueue : MonoBehaviour
     {
         PutFirstInLastPosition();
         HeroArrival();
+        StartCoroutine(Pause(GameLibrary.PauseDuration));
+    }
+
+    public IEnumerator Pause(float pauseDuration)
+    {
+        AudioManager.PlaySoundEffect(AudioManager.SoundEffect.QuestStarted);
+        GameLibrary.QuestManager.StartPause();
+        heroDisplay.HideDisplay();
+        yield return new WaitForSeconds(pauseDuration);
+
+        AudioManager.PlaySoundEffect(AudioManager.SoundEffect.Greeting);
+        GameLibrary.QuestManager.EndPause();
         heroDisplay.displayHero(heroQueue[0]);
     }
 

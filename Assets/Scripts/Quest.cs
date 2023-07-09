@@ -127,7 +127,7 @@ public class Quest
             }
         }
 
-        newQuest.difficulty = Random.Range(0, Mathf.Min(maxDifficulty, GameLibrary.PlayerXpManager.currentLevel));
+        newQuest.difficulty = Random.Range(0, Mathf.Min(maxDifficulty, GameLibrary.PlayerXpManager.currentLevel+3));
         newQuest.minorItem = GameLibrary.GetMinorItemFromEnum(GameLibrary.RandomMinorItem());
         newQuest.minorItemCount = newQuest.difficulty+1;
         newQuest.heroType = GameLibrary.RandomHeroType();

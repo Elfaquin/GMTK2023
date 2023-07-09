@@ -102,4 +102,22 @@ public class QuestsManager : MonoBehaviour
             }
         }
     }
+
+    public void StartPause()
+    {
+        foreach(GameObject go in questDisplayers) 
+        {
+            QuestDisplayer questDisplayer = go.GetComponent<QuestDisplayer>();
+            questDisplayer.StartPause();
+        }
+    }
+
+    public void EndPause()
+    {
+        foreach (GameObject go in questDisplayers)
+        {
+            QuestDisplayer questDisplayer = go.GetComponent<QuestDisplayer>();
+            questDisplayer.EndPause();
+        }
+    }
 }
