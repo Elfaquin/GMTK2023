@@ -52,13 +52,19 @@ public class QuestsManager : MonoBehaviour
                 questDisplayer.Unlock();
             }
             
+            if(questDisplayer.IsAccessibleAtThisLevel())
+            {
+                questDisplayer.Lock();
+            }
+
             // Impossible condition check
             if(questDisplayer.currentQuest.isImpossible())
             {
+                Debug.LogWarning($"Quest {go.name} is impossible !");
                 Quest newQuest = Quest.CreateRandomQuest();
                 questDisplayer.SetCurrentQuest(newQuest);
                 questDisplayer.Unlock();
-                RerollQuests();
+                //RerollQuests();
             }
         }
 

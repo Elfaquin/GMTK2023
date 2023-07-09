@@ -15,5 +15,6 @@ public enum QuestTypeEnum
     Fetch,
     Kill,
     Dungeon,
-    Speak
+    Speak,
+    SaveTheCat
 }

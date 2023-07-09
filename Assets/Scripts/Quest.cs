@@ -112,16 +112,18 @@ public class Quest
         // Condition 1 : if the fetched item is already in the inventory
         if(hasFetchedItem)
         {
-            if(GameLibrary.InventoryManager.HasItem(fetchedItem.enumValue) == false)
+            if(GameLibrary.InventoryManager.HasItem(fetchedItem.enumValue) == true)
             {
+                Debug.LogWarning($"Quest impossible : wants to fetch the item {fetchedItem.enumValue}");
                 return true;
             }
         }
         // Condition 2 : if the given item is not in the inventory
         if (hasLostItem)
         {
-            if (GameLibrary.InventoryManager.HasItem(lostItem.enumValue) == true)
+            if (GameLibrary.InventoryManager.HasItem(lostItem.enumValue) == false)
             {
+                Debug.LogWarning($"Quest impossible : wants to give the item {fetchedItem.enumValue}");
                 return true;
             }
         }
