@@ -82,7 +82,9 @@ public class LogsWindow : MonoBehaviour {
 		UnlockedZone,
 		//
 
-
+		LevelLost,
+		Win,
+		Lost
 	};
 
 	// =================================
@@ -154,8 +156,28 @@ public class LogsWindow : MonoBehaviour {
 
 	public static void Event_CollectedCat(int catNumber) {
 		Instance.NewLine(
-			LogsEventType.ExpPoint,
+			LogsEventType.CollectedCat,
 			$"Woooow ! You've obtained the {catNumber}th cat of destiny. Will you save the world ???"
+		);
+	}
+
+	public static void Event_LevelLost(int catNumber) {
+		Instance.NewLine(
+			LogsEventType.LevelLost,
+			$"Oh no, you lost a level... You won't be able to access all the zones anymore."
+		);
+	}
+
+	public static void Event_Win(int catNumber) {
+		Instance.NewLine(
+			LogsEventType.Win,
+			$"GG ! We didn't have time to polish the game so you completed it !"
+		);
+	}
+	public static void Event_Lost(int catNumber) {
+		Instance.NewLine(
+			LogsEventType.Lost,
+			$"You just lost... try again ?"
 		);
 	}
 

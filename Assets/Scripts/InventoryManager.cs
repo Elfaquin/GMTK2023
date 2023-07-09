@@ -1,22 +1,34 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using static UnityEditor.Progress;
 
+<<<<<<< Updated upstream
 public class InventoryManager : MonoBehaviour
 {
     public List<ItemEnum> fetchingItems;
-    public List<ItemEnum> items;
+	[SerializeField] private TMPro.TMP_Text cat_text;
+	public List<ItemEnum> items;
     public List<ItemDisplayer> itemDisplayers;
     public int gold;
-    public int xp;
-    public AnimationCurve xpCurve;
-    public int level;
 
-    public bool HasItem(ItemEnum itemEnum)
+    private int numberOfCats = 0;
+
+    public bool CanHaveACat() {
+        return numberOfCats < GameLibrary.PlayerXpManager.GetMaxZone();
+	}
+
+	public bool AddCat() {
+		numberOfCats++;
+
+        cat_text.text = ("" + numberOfCats);
+        LogsWindow.Event_CollectedCat(numberOfCats);
+
+		return numberOfCats >= 6;
+	}
+
+
+
+	public bool HasItem(ItemEnum itemEnum)
     {
         foreach (ItemEnum gotItemEnum in items)
         {

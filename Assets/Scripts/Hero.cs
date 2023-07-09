@@ -56,9 +56,9 @@ public class Hero
         {
             Debug.LogWarning("You are trying to resolve a null quest.");
             return false;
-        }
-        float success = UnityEngine.Random.Range(0, assignedQuest.chancesOfSuccess);
-        if (success > 0)
+		}
+		float success = Random.Range(0, this.chancesOfSuccess);
+		if (success > 0)
         {
             LogsWindow.Event_QuestSucceeded(assignedQuest);
             GameLibrary.PlayerGoldManager.AddGold(assignedQuest.minorItem.goldCount * assignedQuest.minorItemCount);
@@ -68,6 +68,11 @@ public class Hero
             }
             this.AddXp (GameLibrary.StaticXpGainedByHeroPerQuest * (assignedQuest.difficulty + 1));
             this.AddXp (assignedQuest.xpOnSuccess);
+
+            if(assignedQuest.isCat) {
+                GameLibrary.InventoryManager.AddCat();
+            }
+
             return true;
         }
         else

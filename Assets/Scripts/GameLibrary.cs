@@ -25,8 +25,9 @@ public class GameLibrary : MonoBehaviour
     [SerializeField] private QuestType Kill;
     [SerializeField] private QuestType Dungeon;
     [SerializeField] private QuestType Speak;
+    [SerializeField] private QuestType Cat;
 
-    [SerializeField] private InventoryManager inventoryManager;
+	[SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private NegotiationDisplay negotiationDisplay;
     [SerializeField] private PlayerGoldManager playerGoldManager;
     [SerializeField] private PlayerXpManager playerXpManager;
@@ -180,7 +181,8 @@ public class GameLibrary : MonoBehaviour
             case QuestTypeEnum.Kill: return Instance.Kill; 
             case QuestTypeEnum.Fetch: return Instance.Fetch;
             case QuestTypeEnum.Speak: return Instance.Speak;
-            default: throw new System.Exception("ddddddddddddddddddd");
+            case QuestTypeEnum.SaveTheCat: return Instance.Cat;
+			default: throw new System.Exception("ddddddddddddddddddd");
         }
     }
 

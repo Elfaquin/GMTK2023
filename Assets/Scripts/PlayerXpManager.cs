@@ -12,7 +12,7 @@ public class PlayerXpManager : MonoBehaviour
     public Slider XpSlider;
 
     public int currentLevel;
-    int currentXp;
+    public int currentXp;
     public AnimationCurve playerXpCurve;
     public int xpAtStart;
     public int maxLevel;
@@ -33,6 +33,22 @@ public class PlayerXpManager : MonoBehaviour
         if (!GameLibrary.PlayerGoldManager.RemoveGold(xpBottleCostInGoldCurrencyWithoutInflation)) return;
         AddXp(xpGainPerBottle);
     }
+
+    public int GetMaxZone() {
+        if(currentLevel <= 1) {
+            return 1;
+		} else if(currentLevel <= 3) {
+			return 2;
+		} else if(currentLevel <= 5) {
+			return 3;
+		} else if(currentLevel <= 7) {
+			return 4;
+		} else if(currentLevel <= 9) {
+			return 5;
+		} else {
+            return 6;
+        }
+	}
 
     public void AddXp(int count)
     {
@@ -67,7 +83,6 @@ public class PlayerXpManager : MonoBehaviour
         currentXpCount.text = currentXp.ToString();
         float ratio = (float)(currentXp - GetPreviousLevelXp()) / (GetNextLevelXp() - GetPreviousLevelXp());
         XpSlider.value = ratio;
-        GameLibrary.InventoryManager.xp = currentXp;
     }
 
     int GetNextLevelXp()

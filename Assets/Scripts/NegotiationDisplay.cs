@@ -120,9 +120,9 @@ public class NegotiationDisplay : MonoBehaviour
 
     public void OnXpSliderValueChanged()
     {
-        Debug.Log($"Available XP : {GameLibrary.InventoryManager.xp}");
-        givenXpCount = (int)(givenXp.value * GameLibrary.InventoryManager.xp);
-        givenXpText.text = $"{givenXpCount}/{GameLibrary.InventoryManager.xp}";
+        Debug.Log($"Available XP : {GameLibrary.PlayerXpManager.currentXp}");
+        givenXpCount = (int)(givenXp.value * GameLibrary.PlayerXpManager.currentXp);
+        givenXpText.text = $"{givenXpCount}/{GameLibrary.PlayerXpManager.currentXp}";
         ComputeSatisfaction();
     }
 
